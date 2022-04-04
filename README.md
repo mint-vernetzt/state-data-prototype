@@ -547,8 +547,8 @@
 ```
 
 ## Evaluation
-✔️ 16 states
+✔️ 16 states  
 ❌ 399 instead of 401 districts
 
-> In der Bundesrepublik Deutschland gibt es nach dem amtlichen Gemeindeverzeichnis des Statistischen Bundesamtes derzeit 294 Kreise bzw. Landkreise und 107 kreisfreie Städte bzw. Stadtkreise.
-- Wikipedia
+> In der Bundesrepublik Deutschland gibt es nach dem amtlichen Gemeindeverzeichnis des Statistischen Bundesamtes derzeit 294 Kreise bzw. Landkreise und 107 kreisfreie Städte bzw. Stadtkreise.  
+\- Wikipedia
