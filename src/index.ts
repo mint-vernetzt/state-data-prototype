@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import localities from '../data/german-postal-codes.json';
 
-
 // Interfaces
 interface State {
     name: string
@@ -20,8 +19,8 @@ async function main() {
     let districts: District[] = [];
 
     // Clean database from old executions (TODO reset id increment)
-    await prisma.state.deleteMany()
     await prisma.district.deleteMany()
+    await prisma.state.deleteMany()
 
     // Loop through german-postal-codes.json and convert the state and community attributes to objects and store them in an array
     for (let i = 1; i <= Object.keys(localities).length; i++) {
