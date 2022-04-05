@@ -12,13 +12,14 @@ datasource db {
 
 model State {
   id        Int      @id @default(autoincrement())
-  name      String
+  name      String   @unique
   districts District[]
 }
 
 model District {
   id        Int      @id @default(autoincrement())
   name      String
-  state     State @relation(fields: [stateId], references: [id])
+  state     State    @relation(fields: [stateId], references: [id])
   stateId   Int
+  @@unique([name, stateId])
 }

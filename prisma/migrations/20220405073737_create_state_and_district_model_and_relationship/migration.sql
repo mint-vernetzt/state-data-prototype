@@ -15,5 +15,11 @@ CREATE TABLE "District" (
     CONSTRAINT "District_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "State_name_key" ON "State"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "District_name_stateId_key" ON "District"("name", "stateId");
+
 -- AddForeignKey
 ALTER TABLE "District" ADD CONSTRAINT "District_stateId_fkey" FOREIGN KEY ("stateId") REFERENCES "State"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
