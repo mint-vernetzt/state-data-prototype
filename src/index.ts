@@ -13,10 +13,10 @@ export interface District {
 }
 
 // Load prisma
-const prisma = new PrismaClient()
-export default prisma
+export const prisma = new PrismaClient()
 
-export async function main(apiUrl, stateKey='state', districtKey='name') {
+// The main function, which is called by the cli (load-german-states-and-districts.ts)
+export async function main(apiUrl?:string, stateKey='state', districtKey='community') {
     if (apiUrl) {
         // Makes a http request to the corona API and returns the response body
         await https.get(apiUrl, async res=> {
@@ -34,7 +34,7 @@ export async function main(apiUrl, stateKey='state', districtKey='name') {
                 const districts: District[] = returnValue[1]
 
                 await writeToDatabase(states, districts)
-
+                await logResults();
             });
         }).on('error', err => {
             console.log('Error: ', err.message);
@@ -45,8 +45,8 @@ export async function main(apiUrl, stateKey='state', districtKey='name') {
         const districts: District[] = returnValue[1]
 
         await writeToDatabase(states, districts)
+        await logResults();
     }
-    await logResults();
 }
 
 // Loop through a json object and convert the attributes to objects and store them in an array
@@ -110,12 +110,3 @@ export async function logResults() {
     })
     console.dir(allStates, {depth: null})
 }
-
-/*
-main('https://api.corona-zahlen.org/districts', 'state', 'county')
-    .catch((e) => {
-        throw e
-    })
-    .finally(async () => {
-        await prisma.$disconnect()
-    })*/

@@ -1,26 +1,27 @@
 {
   "name": "german-states-districts-dataset",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is a package for loading the german states and districts. It holds a prisma schema as well as a cli tool to populate the database.",
+  "main": "load-german-states-and-districts.ts",
   "scripts": {
     "test": "jest",
     "run": "ts-node src/index.ts"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Paul Maier",
+  "license": "MIT",
   "devDependencies": {
-    "@prisma/client": "^3.11.1",
     "@types/jest": "^27.4.1",
     "@types/node": "^17.0.23",
     "jest": "^27.5.1",
-    "jest-mock-extended": "2.0.4",
-    "node-fetch": "^3.2.3",
+    "jest-mock-extended": "2.0.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.11.1",
     "prisma": "^3.11.1",
+    "commander": "^9.1.0",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
-  },
-  "dependencies": {}
+  }
 }

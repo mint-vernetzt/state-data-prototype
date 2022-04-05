@@ -1,6 +1,4 @@
-import {evaluateJsonObject, logResults, State, District} from './index';
-import { PrismaClient } from '@prisma/client'
-import { prismaMock } from './singelton'
+import {evaluateJsonObject, State, District} from './index';
 
 
 test('test evaluateJsonObject', async () => {
@@ -75,10 +73,4 @@ test('test evaluateJsonObject with bigger object', async () => {
     ]
     await expect(evaluateJsonObject(testJson, 'state', 'name')).toStrictEqual([stateResults, districtResults]);
 });
-test('log the states and districts ', async () => {
-    prismaMock.state.create({ name: "BL1"})
 
-    await expect(logResults()).resolves.toEqual([
-        { id: 1, name: "BL1", districts: []}
-    ])
-})
