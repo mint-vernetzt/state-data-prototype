@@ -1,8 +1,16 @@
 # State-data-prototype
 
-## Sample output from querying the states with their districts (german-postal-codes.json)
+## How to use this package
+1. Edit the ```DATABASE_URL``` in the .env to point to your database
+2. Run ```prisma migrate reset```or ```prisma migrate dev --create_state_and_district_model_and_relationship```
+3. Run ```yarn start``` (run yarn start --help for options)
+4. Check you database (and hopefully be happy)
 
-```
+## Sample output
+``` bash
+user@host:~/.../german-states-and-districts-dataset$ yarn start --output
+yarn run v1.22.18
+$ ts-node load-german-states-and-districts.ts --output
 [
   {
     id: 1,
@@ -544,17 +552,10 @@
     ]
   }
 ]
+Done in 3.03s.
 ```
-
-## Evaluation
-✔️ 16 states  
-❌ 399 instead of 401 districts
-
-> In der Bundesrepublik Deutschland gibt es nach dem amtlichen Gemeindeverzeichnis des Statistischen Bundesamtes derzeit 294 Kreise bzw. Landkreise und 107 kreisfreie Städte bzw. Stadtkreise.  
-(Quelle: Wikipedia)
-> 
 
 ## Sources
 
-german-postal-codes.json:
+data/german-postal-codes.json:
 [https://www.wiwald.com/ds/kostenlose-liste-deutscher-postleitzahlen-und-zugehoeriger-orte/id/ww-german-postal-codes](https://www.wiwald.com/ds/kostenlose-liste-deutscher-postleitzahlen-und-zugehoeriger-orte/id/ww-german-postal-codes) (CC BY 4.0)

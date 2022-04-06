@@ -62,7 +62,6 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
     let states: State[] = [];
     let districts: District[] = [];
 
-    console.log(Object.entries(jsonObject))
     for (const [, value] of Object.entries(jsonObject)) {
         if ((states.filter(filterState => filterState.name == value[stateKey])).length == 0) {
             states.push({ name: value[stateKey] })
