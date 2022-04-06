@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-import localities from '../data/german-postal-codes.json';
 const https = require('https');
 
 // Interfaces
@@ -16,7 +15,7 @@ export interface District {
 export const prisma = new PrismaClient()
 
 // The main function, which is called by the cli (load-german-states-and-districts.ts)
-export async function main(apiUrl?:string, stateKey='state', districtKey='community') {
+export async function main(apiUrl?:string, filePath?:string, stateKey='state', districtKey='community', consoleOutput: boolean = false) {
     if (apiUrl) {
         // Makes a http request to the corona API and returns the response body
         await https.get(apiUrl, async res=> {
@@ -34,18 +33,20 @@ export async function main(apiUrl?:string, stateKey='state', districtKey='commun
                 const districts: District[] = returnValue[1]
 
                 await writeToDatabase(states, districts)
-                await logResults();
+                return await logResults(consoleOutput);
             });
         }).on('error', err => {
             console.log('Error: ', err.message);
         });
     } else {
+        const localities = await import(filePath).then(module => module.default);
+
         const returnValue: any[] = evaluateJsonObject(localities, stateKey, districtKey)
         const states: State[] = returnValue[0]
         const districts: District[] = returnValue[1]
 
         await writeToDatabase(states, districts)
-        await logResults();
+        return await logResults(consoleOutput);
     }
 }
 
@@ -101,12 +102,16 @@ async function writeToDatabase(states: State[], districts: District[]) {
     }
 }
 
-export async function logResults() {
+export async function logResults(consoleOutput: boolean) {
     // Get all states together with their districts and log them
     const allStates = await prisma.state.findMany({
         include: {
             districts: true,
         }
     })
-    console.dir(allStates, {depth: null})
+    if (consoleOutput) {
+        console.log(allStates)
+    } else {
+        return allStates
+    }
 }
