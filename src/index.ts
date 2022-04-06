@@ -110,7 +110,7 @@ export async function logResults(consoleOutput: boolean) {
         }
     })
     if (consoleOutput) {
-        console.log(allStates)
+        console.dir(allStates, {depth: null})
     } else {
         return allStates
     }

@@ -9,7 +9,7 @@ program
     .option('-f, --file <char>', 'the path to the file with the districts and their states', '../data/german-postal-codes.json')
     .option('-s, --stateKey <char>', 'the key of the objects that holds the state name', 'state')
     .option('-d, --districtKey <char>', 'the key of the objects that holds the district name', 'community')
-    .option('-0, --output <boolean>', '', true);
+    .option('--output', 'whether to log the resulting database');
 
 
 program.parse();
