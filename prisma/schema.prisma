@@ -21,4 +21,5 @@ model District {
   name      String
   state     State    @relation(fields: [stateAgsPrefix], references: [agsPrefix])
   stateAgsPrefix   String
+  @@unique([name, stateAgsPrefix])
 }
