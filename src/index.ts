@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client'
 const https = require('https');
+import prisma from "./client";
 
 // Interfaces
 export interface State {
@@ -10,9 +10,6 @@ export interface District {
     name: string,
     state: State
 }
-
-// Load prisma
-export const prisma = new PrismaClient()
 
 // The main function, which is called by the cli (load-german-states-and-districts.ts)
 export async function main(apiUrl?:string, filePath?:string, stateKey='state', districtKey='community', consoleOutput: boolean = false) {
@@ -65,6 +62,7 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
     let states: State[] = [];
     let districts: District[] = [];
 
+    console.log(Object.entries(jsonObject))
     for (const [, value] of Object.entries(jsonObject)) {
         if ((states.filter(filterState => filterState.name == value[stateKey])).length == 0) {
             states.push({ name: value[stateKey] })
@@ -78,7 +76,7 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
 }
 
 // Clear the database and write the states and districts to it, also relate them
-async function writeToDatabase(states: State[], districts: District[]) {
+export async function writeToDatabase(states: State[], districts: District[]) {
     // Clean database from old executions
     await prisma.district.deleteMany()
     await prisma.state.deleteMany()

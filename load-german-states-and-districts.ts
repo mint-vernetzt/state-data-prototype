@@ -1,5 +1,6 @@
 import { program } from 'commander'
-import { main, prisma } from './src'
+import { main } from './src'
+import { ctx } from './src/index'
 
 program
     .name('german-states-and-districts-dataset-generator')
@@ -17,8 +18,8 @@ program.parse();
 const options = program.opts();
 
 if (options.url) {
-    main(options.url, '', options.stateKey, options.districtKey, options.output).catch((e) => {throw e}).finally(async () => {await prisma.$disconnect()})
+    main(options.url, '', options.stateKey, options.districtKey, options.output).catch((e) => {throw e}).finally(async () => {await ctx.prisma.$disconnect()})
 } else {
-    main(null, '../' + options.file, options.stateKey, options.districtKey, options.output).catch((e) => {throw e}).finally(async () => {await prisma.$disconnect()})
+    main(null, '../' + options.file, options.stateKey, options.districtKey, options.output).catch((e) => {throw e}).finally(async () => {await ctx.prisma.$disconnect()})
 }
 

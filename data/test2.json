@@ -1,0 +1,23 @@
+{
+  "1": {
+    "state": "BL1",
+    "name": "LK1",
+    "uselessAttribute": "uselessValue",
+    "community": "this value should be ignored"
+  },
+  "a": {
+    "state": "BL1",
+    "name": "LK2",
+    "uselessAttribute1": "uselessValue",
+    "uselessAttribute2": "uselessValue"
+
+  },
+  "hallo": {
+    "state": "BL3",
+    "name": "LK3"
+  },
+  "1000": {
+    "state": "BL4",
+    "name": "LK4"
+  }
+}
