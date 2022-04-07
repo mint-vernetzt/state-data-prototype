@@ -75,7 +75,7 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
             districts.push({name: value[districtKey], ags: key, stateAgsPrefix: key.slice(0, 2)  })
         }
     }
-
+    
     // Check if there are states with the same name but different ags prefixes
     for (let i = 0; i < states.length; i++) {
         for (let j = 0; j < states.length; j++) {
@@ -127,19 +127,23 @@ export async function writeToDatabase(data: {states: any[], districts: any[]}, v
         }
     })
     verbose && console.log('Deleted ' + deleteStates.length + ' states and ' + deleteDistricts.length + ' districts')
+    
     // Update the states and districts that are in the new data
+    const stateUpdates = [];
     for (const state of updateStates) {
-        await prisma.state.update({
+        stateUpdates.push(prisma.state.update({
             where: {
                 agsPrefix: state.agsPrefix
             },
             data: {
                 name: state.name
             }
-        })
+        }));
     }
+
+    const districtUpdates = [];
     for (const district of updateDistricts) {
-        await prisma.district.update({
+        districtUpdates.push(prisma.district.update({
             where: {
                 ags: district.ags
             },
@@ -147,9 +151,12 @@ export async function writeToDatabase(data: {states: any[], districts: any[]}, v
                 name: district.name,
                 stateAgsPrefix: district.stateAgsPrefix
             }
-        })
+        }));
     }
+
+    await prisma.$transaction([...stateUpdates, ...districtUpdates]);
     verbose && console.log('Updated ' + updateStates.length + ' states and ' + updateDistricts.length + ' districts')
+
     // Write all new states and districts to the database
     await prisma.state.createMany({
         data: createStates
