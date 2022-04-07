@@ -1,17 +1,6 @@
 const https = require('https');
 import prisma from "./client";
-
-// Interfaces
-export interface State {
-    name: string,
-    agsPrefix: string
-}
-
-export interface District {
-    name: string,
-    ags: string,
-    stateAgsPrefix?: string
-}
+import type { State, District } from '@prisma/client'
 
 // The main function, which is called by the cli (load-german-states-and-districts.ts)
 export async function main(apiUrl?:string, filePath?:string, stateKey='state', districtKey='county', verbose: boolean = false) {
@@ -46,7 +35,12 @@ export async function main(apiUrl?:string, filePath?:string, stateKey='state', d
 // Expected structure:
 /*
 {
-    ags: {
+    ags1: {
+        stateKey: string,
+        districtKey: string,
+        ...
+    },
+    ags2: {
         stateKey: string,
         districtKey: string,
         ...
@@ -97,6 +91,8 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
     return {states: states, districts: districts}
 }
 
+
+// Prepare the data for writeToDatabase() so that it can efficiently be written to with bulk insert, update, or delete
 export function prepareQueries(current: {states: any[], districts: any[]}, data: {states: any[], districts: any[]}, verbose = false) {
     const currentDistricts = current.districts
     const currentStates = current.states
@@ -120,11 +116,9 @@ export function prepareQueries(current: {states: any[], districts: any[]}, data:
 }
 
 // Intelligently write the states and districts to the database
-// TODO needs to be tested but that requires a database mock
 export async function writeToDatabase(data: {states: any[], districts: any[]}, verbose = false) {
     const currentDistricts = await prisma.district.findMany()
     const currentStates = await prisma.state.findMany()
-
 
     const queries = prepareQueries({states: currentStates, districts: currentDistricts}, data, verbose)
 
