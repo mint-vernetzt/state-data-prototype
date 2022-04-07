@@ -976,5 +976,9 @@ Done in 2.78s.
 
 ## Sources
 
-data/corona-api-06-04-2022.json (visited on April 6th 2022):
-[https://api.corona-zahlen.org/districts](https://api.corona-zahlen.org/districts) (CC BY 4.0)
+### data/corona-api-06-04-2022.json:  
+Robert Koch-Institut COVID-19 API - von Marlon Lückert  
+[https://api.corona-zahlen.org/docs/](https://api.corona-zahlen.org/docs/)  
+Exact route: [https://api.corona-zahlen.org/districts](https://api.corona-zahlen.org/districts) (visited on April 6th 2022)  
+Modifications: prettified with https://jsonformatter.curiousconcept.com/  
+Licence (CC BY 4.0)
