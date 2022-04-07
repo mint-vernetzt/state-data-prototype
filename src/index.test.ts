@@ -1,4 +1,4 @@
-import {evaluateJsonObject } from './index';
+import { evaluateJsonObject, prepareQueries } from './index';
 
 describe('test evaluateJsonObject() from index.js', () => {
     test('test basic functionality', () => {
@@ -201,4 +201,470 @@ describe('test evaluateJsonObject() from index.js', () => {
         expect(() => {evaluateJsonObject(testJson, 'state', 'name')}).toThrowError(new Error('There are districts with the same name but different ags: A (01234) and A (01235), maybe use a different districtKey?'));
     });
 })
+
+// test prepareQueries
+describe('test prepareQueries() from index.js', () => {
+    test('test with existing states and districts (no changes needed)', () => {
+        const currentStates = [
+            {
+                agsPrefix: '01',
+                name: 'BL1'
+            },
+            {
+                agsPrefix: '02',
+                name: 'BL2'
+            }
+        ]
+        const currentDistricts = [
+            {
+                ags: '01234',
+                name: 'LK1',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '02345',
+                name: 'LK2',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4',
+                stateAgsPrefix: '01',
+            }
+        ]
+        const inputSates = [
+            {
+                agsPrefix: '01',
+                name: 'BL1'
+            },
+            {
+                agsPrefix: '02',
+                name: 'BL2'
+            }
+        ]
+        const inputDistricts = [
+            {
+                ags: '01234',
+                name: 'LK1',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '02345',
+                name: 'LK2',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4',
+                stateAgsPrefix: '01',
+            }
+        ]
+        expect(prepareQueries({states: currentStates, districts: currentDistricts}, {
+            states: inputSates,
+            districts: inputDistricts
+        })).toEqual(
+            {
+                insertStates: [],
+                insertDistricts: [],
+                updateDistricts: [],
+                deleteDistricts: [],
+                updateStates: [],
+                deleteStates: []
+            });
+    });
+
+    test('test with empty database (create all)', () => {
+        const currentStates = [];
+        const currentDistricts = [];
+        const inputSates = [
+            {
+                agsPrefix: '01',
+                name: 'BL1'
+            },
+            {
+                agsPrefix: '02',
+                name: 'BL2'
+            }
+        ]
+        const inputDistricts = [
+            {
+                ags: '01234',
+                name: 'LK1',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '02345',
+                name: 'LK2',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4',
+                stateAgsPrefix: '01',
+            }
+        ]
+        expect(prepareQueries({states: currentStates, districts: currentDistricts}, {states: inputSates, districts: inputDistricts})).toEqual({
+            insertStates: [
+                {
+                    agsPrefix: '01',
+                    name: 'BL1'
+                },
+                {
+                    agsPrefix: '02',
+                    name: 'BL2'
+                }
+            ],
+            insertDistricts: [
+                {
+                    ags: '01234',
+                    name: 'LK1',
+                    stateAgsPrefix: '01',
+                },
+                {
+                    ags: '02345',
+                    name: 'LK2',
+                    stateAgsPrefix: '02',
+                },
+                {
+                    ags: '02456',
+                    name: 'LK3',
+                    stateAgsPrefix: '02',
+                },
+                {
+                    ags: '01567',
+                    name: 'LK4',
+                    stateAgsPrefix: '01',
+                }
+            ],
+            updateDistricts: [],
+            deleteDistricts: [],
+            updateStates: [],
+            deleteStates: []
+        });
+    });
+
+    test('test with no input states and districts (delete all)', () => {
+        const currentStates = [
+            {
+                agsPrefix: '01',
+                name: 'BL1'
+            },
+            {
+                agsPrefix: '02',
+                name: 'BL2'
+            }
+        ]
+        const currentDistricts = [
+            {
+                ags: '01234',
+                name: 'LK1',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '02345',
+                name: 'LK2',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4',
+                stateAgsPrefix: '01',
+            }
+        ]
+        expect(prepareQueries({states: currentStates, districts: currentDistricts}, {
+            states: [],
+            districts: []
+        })).toEqual(
+            {
+                insertStates: [],
+                insertDistricts: [],
+                updateDistricts: [],
+                updateStates: [],
+                deleteStates: [
+                    {
+                        agsPrefix: '01',
+                        name: 'BL1'
+                    },
+                    {
+                        agsPrefix: '02',
+                        name: 'BL2'
+                    }
+                ],
+                deleteDistricts: [
+                    {
+                        ags: '01234',
+                        name: 'LK1',
+                        stateAgsPrefix: '01',
+                    },
+                    {
+                        ags: '02345',
+                        name: 'LK2',
+                        stateAgsPrefix: '02',
+                    },
+                    {
+                        ags: '02456',
+                        name: 'LK3',
+                        stateAgsPrefix: '02',
+                    },
+                    {
+                        ags: '01567',
+                        name: 'LK4',
+                        stateAgsPrefix: '01',
+                    }
+                ],
+            });
+    });
+
+    test('test with existing states and districts (update all)', () => {
+        const currentStates = [
+            {
+                agsPrefix: '01',
+                name: 'BL1'
+            },
+            {
+                agsPrefix: '02',
+                name: 'BL2'
+            }
+        ]
+        const currentDistricts = [
+            {
+                ags: '01234',
+                name: 'LK1',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '02345',
+                name: 'LK2',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4',
+                stateAgsPrefix: '01',
+            }
+        ]
+        const inputSates = [
+            {
+                agsPrefix: '01',
+                name: 'BL1 (neu)'
+            },
+            {
+                agsPrefix: '02',
+                name: 'BL2 (neu)'
+            }
+        ]
+        const inputDistricts = [
+            {
+                ags: '01234',
+                name: 'LK1 (neu)',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '02345',
+                name: 'LK2 (neu)',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3 (neu)',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4 (neu)',
+                stateAgsPrefix: '01',
+            }
+        ]
+        expect(prepareQueries({states: currentStates, districts: currentDistricts}, {
+            states: inputSates,
+            districts: inputDistricts
+        })).toEqual(
+            {
+                insertStates: [],
+                insertDistricts: [],
+                updateStates: [
+                    {
+                        agsPrefix: '01',
+                        name: 'BL1 (neu)'
+                    },
+                    {
+                        agsPrefix: '02',
+                        name: 'BL2 (neu)'
+                    }
+                ],
+                updateDistricts: [
+                    {
+                        ags: '01234',
+                        name: 'LK1 (neu)',
+                        stateAgsPrefix: '01',
+                    },
+                    {
+                        ags: '02345',
+                        name: 'LK2 (neu)',
+                        stateAgsPrefix: '02',
+                    },
+                    {
+                        ags: '02456',
+                        name: 'LK3 (neu)',
+                        stateAgsPrefix: '02',
+                    },
+                    {
+                        ags: '01567',
+                        name: 'LK4 (neu)',
+                        stateAgsPrefix: '01',
+                    }
+                ],
+                deleteStates: [],
+                deleteDistricts: [],
+            });
+    });
+
+    test('test with everything  (create, update and delete)', () => {
+        const currentStates = [
+            {
+                agsPrefix: '01',
+                name: 'BL1'
+            },
+            {
+                agsPrefix: '02',
+                name: 'BL2'
+            }
+        ]
+        const currentDistricts = [
+            {
+                ags: '01234',
+                name: 'LK1',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '02345',
+                name: 'LK2',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4',
+                stateAgsPrefix: '01',
+            }
+        ]
+        const inputSates = [
+            {
+                agsPrefix: '02',
+                name: 'BL2 (neu)'
+            },
+            {
+                agsPrefix: '03',
+                name: 'BL3'
+            }
+        ]
+        const inputDistricts = [
+            {
+                ags: '02345',
+                name: 'LK2 (neu)',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '02456',
+                name: 'LK3 (neu)',
+                stateAgsPrefix: '02',
+            },
+            {
+                ags: '01567',
+                name: 'LK4 (neu)',
+                stateAgsPrefix: '01',
+            },
+            {
+                ags: '03567',
+                name: 'LK5',
+                stateAgsPrefix: '03',
+            }
+        ]
+        expect(prepareQueries({states: currentStates, districts: currentDistricts}, {
+            states: inputSates,
+            districts: inputDistricts
+        })).toEqual(
+            {
+                insertStates: [
+                    {
+                        agsPrefix: '03',
+                        name: 'BL3'
+                    }
+                ],
+                insertDistricts: [
+                    {
+                        ags: '03567',
+                        name: 'LK5',
+                        stateAgsPrefix: '03',
+                    }
+                ],
+                updateStates: [
+                    {
+                        agsPrefix: '02',
+                        name: 'BL2 (neu)'
+                    }
+                ],
+                updateDistricts: [
+                    {
+                        ags: '02345',
+                        name: 'LK2 (neu)',
+                        stateAgsPrefix: '02',
+                    },
+                    {
+                        ags: '02456',
+                        name: 'LK3 (neu)',
+                        stateAgsPrefix: '02',
+                    },
+                    {
+                        ags: '01567',
+                        name: 'LK4 (neu)',
+                        stateAgsPrefix: '01',
+                    }
+                ],
+                deleteStates: [
+                    {
+                        agsPrefix: '01',
+                        name: 'BL1'
+                    }
+                ],
+                deleteDistricts: [
+                    {
+                        ags: '01234',
+                        name: 'LK1',
+                        stateAgsPrefix: '01',
+                    }
+                ],
+            });
+    });
+})
+
 

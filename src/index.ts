@@ -75,7 +75,7 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
             districts.push({name: value[districtKey], ags: key, stateAgsPrefix: key.slice(0, 2)  })
         }
     }
-    
+
     // Check if there are states with the same name but different ags prefixes
     for (let i = 0; i < states.length; i++) {
         for (let j = 0; j < states.length; j++) {
@@ -97,40 +97,57 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
     return {states: states, districts: districts}
 }
 
+export function prepareQueries(current: {states: any[], districts: any[]}, data: {states: any[], districts: any[]}, verbose = false) {
+    const currentDistricts = current.districts
+    const currentStates = current.states
+
+    // Sort the new states and districts into the categories create, update and delete
+    const insertDistricts = data.districts.filter(district => currentDistricts.filter(filterDistrict => filterDistrict.ags == district.ags).length == 0)
+    const insertStates = data.states.filter(state => currentStates.filter(filterState => filterState.agsPrefix == state.agsPrefix).length == 0)
+    const updateStates = data.states.filter(state => currentStates.filter(filterState => filterState.agsPrefix == state.agsPrefix && filterState.name != state.name).length > 0)
+    const updateDistricts = data.districts.filter(district => currentDistricts.filter(filterDistrict => filterDistrict.ags == district.ags  && (filterDistrict.name != district.name || filterDistrict.stateAgsPrefix != district.stateAgsPrefix)).length > 0)
+    const deleteDistricts = currentDistricts.filter(district => data.districts.filter(filterDistrict => filterDistrict.ags == district.ags).length == 0)
+    const deleteStates = currentStates.filter(state => data.states.filter(filterState => filterState.agsPrefix == state.agsPrefix).length == 0)
+
+    return {
+        insertDistricts: insertDistricts,
+        insertStates: insertStates,
+        updateStates: updateStates,
+        updateDistricts: updateDistricts,
+        deleteDistricts: deleteDistricts,
+        deleteStates: deleteStates
+    }
+}
+
 // Intelligently write the states and districts to the database
 // TODO needs to be tested but that requires a database mock
 export async function writeToDatabase(data: {states: any[], districts: any[]}, verbose = false) {
     const currentDistricts = await prisma.district.findMany()
     const currentStates = await prisma.state.findMany()
 
-    // Sort the new states and districts into the categories create, update and delete
-    const createDistricts = data.districts.filter(district => currentDistricts.filter(filterDistrict => filterDistrict.ags == district.ags).length == 0)
-    const createStates = data.states.filter(state => currentStates.filter(filterState => filterState.agsPrefix == state.agsPrefix).length == 0)
-    const updateStates = data.states.filter(state => currentStates.filter(filterState => filterState.agsPrefix == state.agsPrefix && filterState.name != state.name).length > 0)
-    const updateDistricts = data.districts.filter(district => currentDistricts.filter(filterDistrict => filterDistrict.ags == district.ags  && (filterDistrict.name != district.name || filterDistrict.stateAgsPrefix != district.stateAgsPrefix)).length > 0)
-    const deleteDistricts = currentDistricts.filter(district => data.districts.filter(filterDistrict => filterDistrict.ags == district.ags).length == 0)
-    const deleteStates = currentStates.filter(state => data.states.filter(filterState => filterState.agsPrefix == state.agsPrefix).length == 0)
+
+    const queries = prepareQueries({states: currentStates, districts: currentDistricts}, data, verbose)
 
     // Delete the states and districts that are not in the new data
     await prisma.district.deleteMany({
         where: {
             ags: {
-                in: deleteDistricts.map(district => district.ags)
+                in: queries.deleteDistricts.map(district => district.ags)
             }
         }
     })
     await prisma.state.deleteMany({
         where: {
             agsPrefix: {
-                in: deleteStates.map(state => state.agsPrefix)
+                in: queries.deleteStates.map(state => state.agsPrefix)
             }
         }
     })
-    verbose && console.log('Deleted ' + deleteStates.length + ' states and ' + deleteDistricts.length + ' districts')
-    
+    verbose && console.log('Deleted ' + queries.deleteStates.length + ' states and ' + queries.deleteDistricts.length + ' districts')
+
     // Update the states and districts that are in the new data
     const stateUpdates = [];
-    for (const state of updateStates) {
+    for (const state of queries.updateStates) {
         stateUpdates.push(prisma.state.update({
             where: {
                 agsPrefix: state.agsPrefix
@@ -140,9 +157,8 @@ export async function writeToDatabase(data: {states: any[], districts: any[]}, v
             }
         }));
     }
-
     const districtUpdates = [];
-    for (const district of updateDistricts) {
+    for (const district of queries.updateDistricts) {
         districtUpdates.push(prisma.district.update({
             where: {
                 ags: district.ags
@@ -153,18 +169,17 @@ export async function writeToDatabase(data: {states: any[], districts: any[]}, v
             }
         }));
     }
-
     await prisma.$transaction([...stateUpdates, ...districtUpdates]);
-    verbose && console.log('Updated ' + updateStates.length + ' states and ' + updateDistricts.length + ' districts')
+    verbose && console.log('Updated ' + queries.updateStates.length + ' states and ' + queries.updateDistricts.length + ' districts')
 
     // Write all new states and districts to the database
     await prisma.state.createMany({
-        data: createStates
+        data: queries.insertStates
     })
     await prisma.district.createMany({
-        data: createDistricts
+        data: queries.insertDistricts
     })
-    verbose && console.log('Created ' + createStates.length + ' states and ' + createDistricts.length + ' districts')
+    verbose && console.log('Created ' + queries.insertStates.length + ' states and ' + queries.insertDistricts.length + ' districts')
 }
 
 export async function logStates(verbose: boolean) {
