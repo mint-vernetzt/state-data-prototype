@@ -8,554 +8,973 @@
 
 ## Sample output
 ``` bash
-user@host:~/.../german-states-and-districts-dataset$ yarn start --output
+user@host:~/.../german-states-and-districts-dataset$ yarn start --verbose
 yarn run v1.22.18
-$ ts-node load-german-states-and-districts.ts --output
+$ ts-node load-german-states-and-districts.ts --verbose
+Deleted 0 states and 0 districts
+Updated 0 states and 0 districts
+Created 16 states and 411 districts
+
+All states with their districts:
 [
   {
-    id: 1,
-    name: 'Brandenburg',
+    agsPrefix: '10',
+    name: 'Saarland',
     districts: [
-      { id: 1, name: 'Landkreis Oberspreewald-Lausitz', stateId: 1 },
-      { id: 2, name: 'Kreisfreie Stadt Cottbus', stateId: 1 },
-      { id: 3, name: 'Landkreis Spree-Neiße', stateId: 1 },
-      { id: 4, name: 'Landkreis Uckermark', stateId: 1 },
-      { id: 5, name: 'Landkreis Elbe-Elster', stateId: 1 },
-      { id: 6, name: 'Landkreis Dahme-Spreewald', stateId: 1 },
-      { id: 7, name: 'Kreisfreie Stadt Potsdam', stateId: 1 },
-      { id: 8, name: 'Landkreis Havelland', stateId: 1 },
-      { id: 9, name: 'Landkreis Potsdam-Mittelmark', stateId: 1 },
       {
-        id: 10,
-        name: 'Kreisfreie Stadt Brandenburg an der Havel',
-        stateId: 1
+        ags: '10041',
+        name: 'LK Stadtverband Saarbrücken',
+        stateAgsPrefix: '10'
       },
-      { id: 11, name: 'Landkreis Teltow-Fläming', stateId: 1 },
-      { id: 12, name: 'Frankfurt (Oder)', stateId: 1 },
-      { id: 13, name: 'Landkreis Oder-Spree', stateId: 1 },
-      { id: 14, name: 'Landkreis Märkisch-Oderland', stateId: 1 },
-      { id: 15, name: 'Landkreis Barnim', stateId: 1 },
-      { id: 16, name: 'Landkreis Oberhavel', stateId: 1 },
-      { id: 17, name: 'Landkreis Ostprignitz-Ruppin', stateId: 1 },
-      { id: 18, name: 'Landkreis Prignitz', stateId: 1 }
+      { ags: '10042', name: 'LK Merzig-Wadern', stateAgsPrefix: '10' },
+      { ags: '10043', name: 'LK Neunkirchen', stateAgsPrefix: '10' },
+      { ags: '10044', name: 'LK Saarlouis', stateAgsPrefix: '10' },
+      {
+        ags: '10045',
+        name: 'LK Saarpfalz-Kreis',
+        stateAgsPrefix: '10'
+      },
+      { ags: '10046', name: 'LK Sankt Wendel', stateAgsPrefix: '10' }
     ]
   },
   {
-    id: 2,
+    agsPrefix: '11',
     name: 'Berlin',
-    districts: [ { id: 19, name: 'Berlin, Stadt', stateId: 2 } ]
-  },
-  {
-    id: 3,
-    name: 'Baden-Württemberg',
     districts: [
-      { id: 20, name: 'Stuttgart', stateId: 3 },
-      { id: 21, name: 'Rems-Murr-Kreis', stateId: 3 },
-      { id: 22, name: 'Esslingen', stateId: 3 },
-      { id: 23, name: 'Ludwigsburg', stateId: 3 },
-      { id: 24, name: 'Böblingen', stateId: 3 },
-      { id: 25, name: 'Landkreis Heilbronn', stateId: 3 },
-      { id: 26, name: 'Göppingen', stateId: 3 },
-      { id: 27, name: 'Ostalbkreis', stateId: 3 },
-      { id: 28, name: 'Heilbronn', stateId: 3 },
-      { id: 29, name: 'Hohenlohekreis', stateId: 3 },
-      { id: 30, name: 'Schwäbisch Hall', stateId: 3 },
-      { id: 31, name: 'Main-Tauber-Kreis', stateId: 3 },
-      { id: 32, name: 'Landkreis Heidenheim', stateId: 3 },
-      { id: 33, name: 'Mannheim', stateId: 3 },
-      { id: 34, name: 'Rhein-Neckar-Kreis', stateId: 3 },
-      { id: 35, name: 'Karlsruhe', stateId: 3 },
-      { id: 36, name: 'Heidelberg', stateId: 3 },
-      { id: 37, name: 'Neckar-Odenwald-Kreis', stateId: 3 },
-      { id: 38, name: 'Enzkreis', stateId: 3 },
-      { id: 39, name: 'Freudenstadt', stateId: 3 },
-      { id: 40, name: 'Calw', stateId: 3 },
-      { id: 41, name: 'Pforzheim', stateId: 3 },
-      { id: 42, name: 'Rastatt', stateId: 3 },
-      { id: 43, name: 'Baden-Baden', stateId: 3 },
-      { id: 44, name: 'Rottweil', stateId: 3 },
-      { id: 45, name: 'Ortenaukreis', stateId: 3 },
-      { id: 46, name: 'Schwarzwald-Baar-Kreis', stateId: 3 },
-      { id: 47, name: 'Landkreis Tuttlingen', stateId: 3 },
-      { id: 48, name: 'Konstanz', stateId: 3 },
-      { id: 49, name: 'Freiburg im Breisgau', stateId: 3 },
-      { id: 50, name: 'Emmendingen', stateId: 3 },
+      { ags: '11001', name: 'SK Berlin Mitte', stateAgsPrefix: '11' },
       {
-        id: 51,
-        name: 'Landkreis Breisgau-Hochschwarzwald',
-        stateId: 3
+        ags: '11002',
+        name: 'SK Berlin Friedrichshain-Kreuzberg',
+        stateAgsPrefix: '11'
       },
-      { id: 52, name: 'Landkreis Lörrach', stateId: 3 },
-      { id: 53, name: 'Landkreis Waldshut', stateId: 3 },
-      { id: 54, name: 'Tübingen', stateId: 3 },
-      { id: 55, name: 'Reutlingen', stateId: 3 },
-      { id: 56, name: 'Zollernalbkreis', stateId: 3 },
-      { id: 57, name: 'Landkreis Sigmaringen', stateId: 3 },
-      { id: 58, name: 'Alb-Donau-Kreis', stateId: 3 },
-      { id: 59, name: 'Bodenseekreis', stateId: 3 },
-      { id: 60, name: 'Landkreis Ravensburg', stateId: 3 },
-      { id: 61, name: 'Landkreis Biberach', stateId: 3 },
-      { id: 62, name: 'Ulm', stateId: 3 }
-    ]
-  },
-  {
-    id: 4,
-    name: 'Bayern',
-    districts: [
-      { id: 63, name: 'München', stateId: 4 },
-      { id: 64, name: 'Fürstenfeldbruck', stateId: 4 },
-      { id: 65, name: 'Landkreis München', stateId: 4 },
-      { id: 66, name: 'Landkreis Bad Tölz-Wolfratshausen', stateId: 4 },
-      { id: 67, name: 'Starnberg', stateId: 4 },
-      { id: 68, name: 'Landkreis Landsberg am Lech', stateId: 4 },
-      { id: 69, name: 'Landkreis Weilheim-Schongau', stateId: 4 },
-      { id: 70, name: 'Landkreis Garmisch-Partenkirchen', stateId: 4 },
-      { id: 71, name: 'Rosenheim', stateId: 4 },
-      { id: 72, name: 'Landkreis Rosenheim', stateId: 4 },
-      { id: 73, name: 'Landkreis Traunstein', stateId: 4 },
-      { id: 74, name: 'Berchtesgadener Land', stateId: 4 },
-      { id: 75, name: 'Landkreis Mühldorf am Inn', stateId: 4 },
-      { id: 76, name: 'Landkreis Ebersberg', stateId: 4 },
-      { id: 77, name: 'Miesbach', stateId: 4 },
-      { id: 78, name: 'Landkreis Freising', stateId: 4 },
-      { id: 79, name: 'Landkreis Erding', stateId: 4 },
-      { id: 80, name: 'Landkreis Altötting', stateId: 4 },
-      { id: 81, name: 'Ingolstadt', stateId: 4 },
-      { id: 82, name: 'Eichstätt', stateId: 4 },
-      { id: 83, name: 'Landkreis Pfaffenhofen an der Ilm', stateId: 4 },
-      { id: 84, name: 'Neuburg-Schrobenhausen', stateId: 4 },
-      { id: 85, name: 'Landkreis Dachau', stateId: 4 },
-      { id: 86, name: 'Kreisfreie Stadt Landshut', stateId: 4 },
-      { id: 87, name: 'Landkreis Landshut', stateId: 4 },
-      { id: 88, name: 'Landkreis Kelheim', stateId: 4 },
-      { id: 89, name: 'Landkreis Straubing-Bogen', stateId: 4 },
-      { id: 90, name: 'Dingolfing-Landau', stateId: 4 },
-      { id: 91, name: 'Landkreis Rottal-Inn', stateId: 4 },
-      { id: 92, name: 'Landkreis Regen', stateId: 4 },
-      { id: 93, name: 'Passau', stateId: 4 },
-      { id: 94, name: 'Landkreis Passau', stateId: 4 },
-      { id: 95, name: 'Freyung-Grafenau', stateId: 4 },
-      { id: 96, name: 'Straubing', stateId: 4 },
-      { id: 97, name: 'Landkreis Deggendorf', stateId: 4 },
-      { id: 98, name: 'Landkreis Regensburg', stateId: 4 },
+      { ags: '11003', name: 'SK Berlin Pankow', stateAgsPrefix: '11' },
       {
-        id: 99,
-        name: 'Landkreis Neumarkt in der Oberpfalz',
-        stateId: 4
+        ags: '11004',
+        name: 'SK Berlin Charlottenburg-Wilmersdorf',
+        stateAgsPrefix: '11'
       },
-      { id: 100, name: 'Amberg-Sulzbach', stateId: 4 },
+      { ags: '11005', name: 'SK Berlin Spandau', stateAgsPrefix: '11' },
       {
-        id: 101,
-        name: 'Landkreis Neustadt an der Waldnaab',
-        stateId: 4
-      },
-      { id: 102, name: 'Amberg', stateId: 4 },
-      { id: 103, name: 'Landkreis Schwandorf', stateId: 4 },
-      { id: 104, name: 'Cham', stateId: 4 },
-      { id: 105, name: 'Weiden i.d.OPf.', stateId: 4 },
-      { id: 106, name: 'Landkreis Tirschenreuth', stateId: 4 },
-      { id: 107, name: 'Regensburg', stateId: 4 },
-      { id: 108, name: 'Landkreis Forchheim', stateId: 4 },
-      { id: 109, name: 'Landkreis Bayreuth', stateId: 4 },
-      { id: 110, name: 'Bamberg', stateId: 4 },
-      { id: 111, name: 'Hof', stateId: 4 },
-      { id: 112, name: 'Wunsiedel i.Fichtelgebirge', stateId: 4 },
-      { id: 113, name: 'Landkreis Hof', stateId: 4 },
-      { id: 114, name: 'Landkreis Kulmbach', stateId: 4 },
-      { id: 115, name: 'Bayreuth', stateId: 4 },
-      { id: 116, name: 'Landkreis Coburg', stateId: 4 },
-      { id: 117, name: 'Landkreis Lichtenfels', stateId: 4 },
-      { id: 118, name: 'Landkreis Kronach', stateId: 4 },
-      { id: 119, name: 'Coburg', stateId: 4 },
-      { id: 120, name: 'Nürnberg', stateId: 4 },
-      { id: 121, name: 'Landkreis Fürth', stateId: 4 },
-      { id: 122, name: 'Nürnberger Land', stateId: 4 },
-      { id: 123, name: 'Landkreis Roth', stateId: 4 },
-      { id: 124, name: 'Landkreis Erlangen-Höchstadt', stateId: 4 },
-      { id: 125, name: 'Landkreis Ansbach', stateId: 4 },
-      {
-        id: 126,
-        name: 'Landkreis Neustadt an der Aisch-Bad Windsheim',
-        stateId: 4
-      },
-      { id: 127, name: 'Fürth', stateId: 4 },
-      { id: 128, name: 'Kreisfreie Stadt Erlangen', stateId: 4 },
-      { id: 129, name: 'Kreisfreie Stadt Schwabach', stateId: 4 },
-      { id: 130, name: 'Ansbach', stateId: 4 },
-      {
-        id: 131,
-        name: 'Landkreis Weißenburg-Gunzenhausen',
-        stateId: 4
-      },
-      { id: 132, name: 'Aschaffenburg', stateId: 4 },
-      { id: 133, name: 'Landkreis Aschaffenburg', stateId: 4 },
-      { id: 134, name: 'Landkreis Miltenberg', stateId: 4 },
-      { id: 135, name: 'Landkreis Haßberge', stateId: 4 },
-      { id: 136, name: 'Landkreis Kitzingen', stateId: 4 },
-      { id: 137, name: 'Landkreis Schweinfurt', stateId: 4 },
-      { id: 138, name: 'Würzburg', stateId: 4 },
-      { id: 139, name: 'Landkreis Würzburg', stateId: 4 },
-      { id: 140, name: 'Main-Spessart', stateId: 4 },
-      { id: 141, name: 'Schweinfurt', stateId: 4 },
-      { id: 142, name: 'Landkreis Bad Kissingen', stateId: 4 },
-      { id: 143, name: 'Landkreis Rhön-Grabfeld', stateId: 4 },
-      { id: 144, name: 'Landkreis Aichach-Friedberg', stateId: 4 },
-      { id: 145, name: 'Augsburg', stateId: 4 },
-      { id: 146, name: 'Landkreis Augsburg', stateId: 4 },
-      { id: 147, name: 'Landkreis Günzburg', stateId: 4 },
-      { id: 148, name: 'Landkreis Unterallgäu', stateId: 4 },
-      { id: 149, name: 'Landkreis Dillingen an der Donau', stateId: 4 },
-      { id: 150, name: 'Landkreis Donau-Ries', stateId: 4 },
-      { id: 151, name: 'Landkreis Ostallgäu', stateId: 4 },
-      { id: 152, name: 'Kempten (Allgäu)', stateId: 4 },
-      { id: 153, name: 'Landkreis Oberallgäu', stateId: 4 },
-      { id: 154, name: 'Kaufbeuren', stateId: 4 },
-      { id: 155, name: 'Memmingen', stateId: 4 },
-      { id: 156, name: 'Landkreis Lindau', stateId: 4 },
-      { id: 157, name: 'Neu-Ulm', stateId: 4 }
-    ]
-  },
-  {
-    id: 5,
-    name: 'Bremen',
-    districts: [
-      { id: 158, name: 'Bremerhaven, Stadt', stateId: 5 },
-      { id: 159, name: 'Kreisfreie Stadt Bremen', stateId: 5 }
-    ]
-  },
-  {
-    id: 6,
-    name: 'Hessen',
-    districts: [
-      { id: 160, name: 'Wetteraukreis', stateId: 6 },
-      { id: 161, name: 'Main-Kinzig-Kreis', stateId: 6 },
-      { id: 162, name: 'Wiesbaden, Landeshauptstadt', stateId: 6 },
-      { id: 163, name: 'Frankfurt am Main, Stadt', stateId: 6 },
-      { id: 164, name: 'Hochtaunuskreis', stateId: 6 },
-      { id: 165, name: 'Offenbach am Main, Stadt', stateId: 6 },
-      { id: 166, name: 'Offenbach', stateId: 6 },
-      { id: 167, name: 'Darmstadt, Wissenschaftsstadt', stateId: 6 },
-      { id: 168, name: 'Darmstadt-Dieburg', stateId: 6 },
-      { id: 169, name: 'Odenwaldkreis', stateId: 6 },
-      { id: 170, name: 'Groß-Gerau', stateId: 6 },
-      { id: 171, name: 'Bergstraße', stateId: 6 },
-      { id: 172, name: 'Rheingau-Taunus-Kreis', stateId: 6 },
-      { id: 173, name: 'Main-Taunus-Kreis', stateId: 6 },
-      { id: 174, name: 'Marburg-Biedenkopf', stateId: 6 },
-      { id: 175, name: 'Gießen', stateId: 6 },
-      { id: 176, name: 'Vogelsbergkreis', stateId: 6 },
-      { id: 177, name: 'Lahn-Dill-Kreis', stateId: 6 },
-      { id: 178, name: 'Limburg-Weilburg', stateId: 6 },
-      { id: 179, name: 'Kassel, documenta-Stadt', stateId: 6 },
-      { id: 180, name: 'Schwalm-Eder-Kreis', stateId: 6 },
-      { id: 181, name: 'Kassel', stateId: 6 },
-      { id: 182, name: 'Landkreis Waldeck-Frankenberg', stateId: 6 },
-      { id: 183, name: 'Fulda', stateId: 6 },
-      { id: 184, name: 'Hersfeld-Rotenburg', stateId: 6 },
-      { id: 185, name: 'Werra-Meißner-Kreis', stateId: 6 }
-    ]
-  },
-  {
-    id: 7,
-    name: 'Hamburg',
-    districts: [ { id: 186, name: 'Hamburg, Freie und Hansestadt', stateId: 7 } ]
-  },
-  {
-    id: 8,
-    name: 'Mecklenburg-Vorpommern',
-    districts: [
-      { id: 187, name: 'Mecklenburgische Seenplatte', stateId: 8 },
-      { id: 188, name: 'Vorpommern-Greifswald', stateId: 8 },
-      { id: 189, name: 'Landkreis Rostock', stateId: 8 },
-      { id: 190, name: 'Kreisfreie Stadt Rostock', stateId: 8 },
-      { id: 191, name: 'Vorpommern-Rügen', stateId: 8 },
-      { id: 192, name: 'Schwerin', stateId: 8 },
-      { id: 193, name: 'Ludwigslust-Parchim', stateId: 8 },
-      { id: 194, name: 'Nordwestmecklenburg', stateId: 8 }
-    ]
-  },
-  {
-    id: 9,
-    name: 'Niedersachsen',
-    districts: [
-      { id: 195, name: 'Landkreis Lüneburg', stateId: 9 },
-      { id: 196, name: 'Landkreis Harburg', stateId: 9 },
-      { id: 197, name: 'Landkreis Stade', stateId: 9 },
-      { id: 198, name: 'Landkreis Cuxhaven', stateId: 9 },
-      { id: 199, name: 'Oldenburg (Oldenburg), Stadt', stateId: 9 },
-      { id: 200, name: 'Ammerland', stateId: 9 },
-      { id: 201, name: 'Cloppenburg', stateId: 9 },
-      { id: 202, name: 'Landkreis Oldenburg', stateId: 9 },
-      { id: 203, name: 'Friesland', stateId: 9 },
-      { id: 204, name: 'Wesermarsch', stateId: 9 },
-      { id: 205, name: 'Wilhelmshaven, Stadt', stateId: 9 },
-      { id: 206, name: 'Landkreis Wittmund', stateId: 9 },
-      { id: 207, name: 'Landkreis Aurich', stateId: 9 },
-      { id: 208, name: 'Landkreis Leer', stateId: 9 },
-      { id: 209, name: 'Emden, Stadt', stateId: 9 },
-      { id: 210, name: 'Landkreis Emsland', stateId: 9 },
-      { id: 211, name: 'Landkreis Diepholz', stateId: 9 },
-      { id: 212, name: 'Landkreis Verden', stateId: 9 },
-      { id: 213, name: 'Landkreis Nienburg/Weser', stateId: 9 },
-      { id: 214, name: 'Landkreis Heidekreis', stateId: 9 },
-      { id: 215, name: 'Rotenburg (Wümme)', stateId: 9 },
-      { id: 216, name: 'Landkreis Osterholz', stateId: 9 },
-      { id: 217, name: 'Delmenhorst, Stadt', stateId: 9 },
-      { id: 218, name: 'Landkreis Celle', stateId: 9 },
-      { id: 219, name: 'Landkreis Gifhorn', stateId: 9 },
-      { id: 220, name: 'Uelzen', stateId: 9 },
-      { id: 221, name: 'Lüchow-Dannenberg', stateId: 9 },
-      { id: 222, name: 'Region Hannover', stateId: 9 },
-      { id: 223, name: 'Landkreis Hildesheim', stateId: 9 },
-      { id: 224, name: 'Hameln-Pyrmont', stateId: 9 },
-      { id: 225, name: 'Landkreis Holzminden', stateId: 9 },
-      { id: 226, name: 'Peine', stateId: 9 },
-      { id: 227, name: 'Landkreis Schaumburg', stateId: 9 },
-      { id: 228, name: 'Landkreis Göttingen', stateId: 9 },
-      { id: 229, name: 'Northeim', stateId: 9 },
-      { id: 230, name: 'Landkreis Goslar', stateId: 9 },
-      { id: 231, name: 'Kreisfreie Stadt Braunschweig', stateId: 9 },
-      { id: 232, name: 'Landkreis Helmstedt', stateId: 9 },
-      { id: 233, name: 'Landkreis Wolfenbüttel', stateId: 9 },
-      { id: 234, name: 'Salzgitter, Stadt', stateId: 9 },
-      { id: 235, name: 'Wolfsburg, Stadt', stateId: 9 },
-      { id: 236, name: 'Landkreis Grafschaft Bentheim', stateId: 9 },
-      { id: 237, name: 'Osnabrück, Stadt', stateId: 9 },
-      { id: 238, name: 'Landkreis Osnabrück', stateId: 9 },
-      { id: 239, name: 'Vechta', stateId: 9 }
-    ]
-  },
-  {
-    id: 10,
-    name: 'Nordrhein-Westfalen',
-    districts: [
-      { id: 240, name: 'Düsseldorf, Stadt', stateId: 10 },
-      { id: 241, name: 'Rhein-Kreis Neuss', stateId: 10 },
-      { id: 242, name: 'Mettmann', stateId: 10 },
-      { id: 243, name: 'Mönchengladbach, Stadt', stateId: 10 },
-      { id: 244, name: 'Viersen', stateId: 10 },
-      { id: 245, name: 'Wuppertal, Stadt', stateId: 10 },
-      { id: 246, name: 'Solingen, Stadt', stateId: 10 },
-      { id: 247, name: 'Remscheid, Stadt', stateId: 10 },
-      { id: 248, name: 'Essen, Stadt', stateId: 10 },
-      { id: 249, name: 'Mülheim an der Ruhr, Stadt', stateId: 10 },
-      { id: 250, name: 'Oberhausen, Stadt', stateId: 10 },
-      { id: 251, name: 'Kleve', stateId: 10 },
-      { id: 252, name: 'Wesel', stateId: 10 },
-      { id: 253, name: 'Duisburg, Stadt', stateId: 10 },
-      { id: 254, name: 'Krefeld, Stadt', stateId: 10 },
-      { id: 255, name: 'Kreis Heinsberg', stateId: 10 },
-      { id: 256, name: 'Oberbergischer Kreis', stateId: 10 },
-      { id: 257, name: 'Rheinisch-Bergischer Kreis', stateId: 10 },
-      { id: 258, name: 'Rhein-Erft-Kreis', stateId: 10 },
-      { id: 259, name: 'Köln, Stadt', stateId: 10 },
-      { id: 260, name: 'Leverkusen, Stadt', stateId: 10 },
-      { id: 261, name: 'Rhein-Sieg-Kreis', stateId: 10 },
-      { id: 262, name: 'Städteregion Aachen', stateId: 10 },
-      { id: 263, name: 'Düren', stateId: 10 },
-      { id: 264, name: 'Bonn, Stadt', stateId: 10 },
-      { id: 265, name: 'Euskirchen', stateId: 10 },
-      { id: 266, name: 'Recklinghausen', stateId: 10 },
-      { id: 267, name: 'Gelsenkirchen, Stadt', stateId: 10 },
-      { id: 268, name: 'Bottrop, Stadt', stateId: 10 },
-      { id: 269, name: 'Borken', stateId: 10 },
-      { id: 270, name: 'Münster, Stadt', stateId: 10 },
-      { id: 271, name: 'Warendorf', stateId: 10 },
-      { id: 272, name: 'Coesfeld', stateId: 10 },
-      { id: 273, name: 'Steinfurt', stateId: 10 },
-      { id: 274, name: 'Herford', stateId: 10 },
-      { id: 275, name: 'Lippe', stateId: 10 },
-      { id: 276, name: 'Minden-Lübbecke', stateId: 10 },
-      { id: 277, name: 'Höxter', stateId: 10 },
-      { id: 278, name: 'Paderborn', stateId: 10 },
-      { id: 279, name: 'Gütersloh', stateId: 10 },
-      { id: 280, name: 'Bielefeld, Stadt', stateId: 10 },
-      { id: 281, name: 'Hochsauerlandkreis', stateId: 10 },
-      { id: 282, name: 'Dortmund, Stadt', stateId: 10 },
-      { id: 283, name: 'Unna', stateId: 10 },
-      { id: 284, name: 'Herne, Stadt', stateId: 10 },
-      { id: 285, name: 'Bochum, Stadt', stateId: 10 },
-      { id: 286, name: 'Ennepe-Ruhr-Kreis', stateId: 10 },
-      { id: 287, name: 'Siegen-Wittgenstein', stateId: 10 },
-      { id: 288, name: 'Olpe', stateId: 10 },
-      { id: 289, name: 'Hagen, Stadt', stateId: 10 },
-      { id: 290, name: 'Märkischer Kreis', stateId: 10 },
-      { id: 291, name: 'Soest', stateId: 10 },
-      { id: 292, name: 'Hamm, Stadt', stateId: 10 }
-    ]
-  },
-  {
-    id: 11,
-    name: 'Rheinland-Pfalz',
-    districts: [
-      { id: 293, name: 'Landkreis Altenkirchen', stateId: 11 },
-      { id: 294, name: 'Landkreis Ahrweiler', stateId: 11 },
-      { id: 295, name: 'Vulkaneifel', stateId: 11 },
-      { id: 296, name: 'Landkreis Neuwied', stateId: 11 },
-      { id: 297, name: 'Trier, kreisfreie Stadt', stateId: 11 },
-      { id: 298, name: 'Eifelkreis Bitburg-Prüm', stateId: 11 },
-      { id: 299, name: 'Landkreis Trier-Saarburg', stateId: 11 },
-      { id: 300, name: 'Landkreis Bernkastel-Wittlich', stateId: 11 },
-      { id: 301, name: 'Landkreis Birkenfeld', stateId: 11 },
-      { id: 302, name: 'Mainz, kreisfreie Stadt', stateId: 11 },
-      { id: 303, name: 'Landkreis Mainz-Bingen', stateId: 11 },
-      { id: 304, name: 'Landkreis Alzey-Worms', stateId: 11 },
-      { id: 305, name: 'Rhein-Hunsrück-Kreis', stateId: 11 },
-      { id: 306, name: 'Landkreis Bad Kreuznach', stateId: 11 },
-      { id: 307, name: 'Koblenz, kreisfreie Stadt', stateId: 11 },
-      { id: 308, name: 'Rhein-Lahn-Kreis', stateId: 11 },
-      { id: 309, name: 'Landkreis Mayen-Koblenz', stateId: 11 },
-      { id: 310, name: 'Westerwaldkreis', stateId: 11 },
-      { id: 311, name: 'Landkreis Cochem-Zell', stateId: 11 },
-      { id: 312, name: 'Zweibrücken, kreisfreie Stadt', stateId: 11 },
-      { id: 313, name: 'Südwestpfalz', stateId: 11 },
-      { id: 314, name: 'Landkreis Kaiserslautern', stateId: 11 },
-      { id: 315, name: 'Landkreis Kusel', stateId: 11 },
-      { id: 316, name: 'Pirmasens, kreisfreie Stadt', stateId: 11 },
-      {
-        id: 317,
-        name: 'Ludwigshafen am Rhein, kreisfreie Stadt',
-        stateId: 11
-      },
-      { id: 318, name: 'Landkreis Bad Dürkheim', stateId: 11 },
-      { id: 319, name: 'Rhein-Pfalz-Kreis', stateId: 11 },
-      {
-        id: 320,
-        name: 'Frankenthal (Pfalz), kreisfreie Stadt',
-        stateId: 11
-      },
-      { id: 321, name: 'Donnersbergkreis', stateId: 11 },
-      { id: 322, name: 'Speyer, kreisfreie Stadt', stateId: 11 },
-      { id: 323, name: 'Landkreis Germersheim', stateId: 11 },
-      { id: 324, name: 'Landkreis Südliche Weinstraße', stateId: 11 },
-      {
-        id: 325,
-        name: 'Neustadt an der Weinstraße, kreisfreie Stadt',
-        stateId: 11
-      },
-      { id: 326, name: 'Worms, kreisfreie Stadt', stateId: 11 },
-      {
-        id: 327,
-        name: 'Kaiserslautern, kreisfreie Stadt',
-        stateId: 11
+        ags: '11006',
+        name: 'SK Berlin Steglitz-Zehlendorf',
+        stateAgsPrefix: '11'
       },
       {
-        id: 328,
-        name: 'Kreisfreie Stadt Landau in der Pfalz',
-        stateId: 11
+        ags: '11007',
+        name: 'SK Berlin Tempelhof-Schöneberg',
+        stateAgsPrefix: '11'
+      },
+      {
+        ags: '11008',
+        name: 'SK Berlin Neukölln',
+        stateAgsPrefix: '11'
+      },
+      {
+        ags: '11009',
+        name: 'SK Berlin Treptow-Köpenick',
+        stateAgsPrefix: '11'
+      },
+      {
+        ags: '11010',
+        name: 'SK Berlin Marzahn-Hellersdorf',
+        stateAgsPrefix: '11'
+      },
+      {
+        ags: '11011',
+        name: 'SK Berlin Lichtenberg',
+        stateAgsPrefix: '11'
+      },
+      {
+        ags: '11012',
+        name: 'SK Berlin Reinickendorf',
+        stateAgsPrefix: '11'
       }
     ]
   },
   {
-    id: 12,
-    name: 'Schleswig-Holstein',
+    agsPrefix: '12',
+    name: 'Brandenburg',
     districts: [
-      { id: 329, name: 'Kreis Herzogtum Lauenburg', stateId: 12 },
-      { id: 330, name: 'Kreis Stormarn', stateId: 12 },
-      { id: 331, name: 'Kreis Segeberg', stateId: 12 },
-      { id: 332, name: 'Kreis Pinneberg', stateId: 12 },
-      { id: 333, name: 'Lübeck, Hansestadt', stateId: 12 },
-      { id: 334, name: 'Kreis Ostholstein', stateId: 12 },
-      { id: 335, name: 'Kreis Plön', stateId: 12 },
-      { id: 336, name: 'Kreisfreie Stadt Kiel', stateId: 12 },
-      { id: 337, name: 'Kreis Rendsburg-Eckernförde', stateId: 12 },
-      { id: 338, name: 'Kreis Schleswig-Flensburg', stateId: 12 },
-      { id: 339, name: 'Kreisfreie Stadt Neumünster', stateId: 12 },
-      { id: 340, name: 'Kreis Steinburg', stateId: 12 },
-      { id: 341, name: 'Kreisfreie Stadt Flensburg', stateId: 12 },
-      { id: 342, name: 'Kreis Dithmarschen', stateId: 12 },
-      { id: 343, name: 'Kreis Nordfriesland', stateId: 12 }
+      {
+        ags: '12051',
+        name: 'SK Brandenburg a.d.Havel',
+        stateAgsPrefix: '12'
+      },
+      { ags: '12052', name: 'SK Cottbus', stateAgsPrefix: '12' },
+      {
+        ags: '12053',
+        name: 'SK Frankfurt (Oder)',
+        stateAgsPrefix: '12'
+      },
+      { ags: '12054', name: 'SK Potsdam', stateAgsPrefix: '12' },
+      { ags: '12060', name: 'LK Barnim', stateAgsPrefix: '12' },
+      {
+        ags: '12061',
+        name: 'LK Dahme-Spreewald',
+        stateAgsPrefix: '12'
+      },
+      { ags: '12062', name: 'LK Elbe-Elster', stateAgsPrefix: '12' },
+      { ags: '12063', name: 'LK Havelland', stateAgsPrefix: '12' },
+      {
+        ags: '12064',
+        name: 'LK Märkisch-Oderland',
+        stateAgsPrefix: '12'
+      },
+      { ags: '12065', name: 'LK Oberhavel', stateAgsPrefix: '12' },
+      {
+        ags: '12066',
+        name: 'LK Oberspreewald-Lausitz',
+        stateAgsPrefix: '12'
+      },
+      { ags: '12067', name: 'LK Oder-Spree', stateAgsPrefix: '12' },
+      {
+        ags: '12068',
+        name: 'LK Ostprignitz-Ruppin',
+        stateAgsPrefix: '12'
+      },
+      {
+        ags: '12069',
+        name: 'LK Potsdam-Mittelmark',
+        stateAgsPrefix: '12'
+      },
+      { ags: '12070', name: 'LK Prignitz', stateAgsPrefix: '12' },
+      { ags: '12071', name: 'LK Spree-Neiße', stateAgsPrefix: '12' },
+      { ags: '12072', name: 'LK Teltow-Fläming', stateAgsPrefix: '12' },
+      { ags: '12073', name: 'LK Uckermark', stateAgsPrefix: '12' }
     ]
   },
   {
-    id: 13,
-    name: 'Saarland',
+    agsPrefix: '13',
+    name: 'Mecklenburg-Vorpommern',
     districts: [
-      { id: 344, name: 'Regionalverband Saarbrücken', stateId: 13 },
-      { id: 345, name: 'Saarlouis', stateId: 13 },
-      { id: 346, name: 'Saarpfalz-Kreis', stateId: 13 },
-      { id: 347, name: 'Neunkirchen', stateId: 13 },
-      { id: 348, name: 'St. Wendel', stateId: 13 },
-      { id: 349, name: 'Merzig-Wadern', stateId: 13 }
+      { ags: '13003', name: 'SK Rostock', stateAgsPrefix: '13' },
+      { ags: '13004', name: 'SK Schwerin', stateAgsPrefix: '13' },
+      {
+        ags: '13071',
+        name: 'LK Mecklenburgische Seenplatte',
+        stateAgsPrefix: '13'
+      },
+      { ags: '13072', name: 'LK Rostock', stateAgsPrefix: '13' },
+      {
+        ags: '13073',
+        name: 'LK Vorpommern-Rügen',
+        stateAgsPrefix: '13'
+      },
+      {
+        ags: '13074',
+        name: 'LK Nordwestmecklenburg',
+        stateAgsPrefix: '13'
+      },
+      {
+        ags: '13075',
+        name: 'LK Vorpommern-Greifswald',
+        stateAgsPrefix: '13'
+      },
+      {
+        ags: '13076',
+        name: 'LK Ludwigslust-Parchim',
+        stateAgsPrefix: '13'
+      }
     ]
   },
   {
-    id: 14,
+    agsPrefix: '14',
     name: 'Sachsen',
     districts: [
-      { id: 350, name: 'Kreisfreie Stadt Dresden', stateId: 14 },
-      { id: 351, name: 'Landkreis Meißen', stateId: 14 },
-      { id: 352, name: 'Landkreis Bautzen', stateId: 14 },
-      { id: 353, name: 'Landkreis Sächsische Schweiz', stateId: 14 },
-      { id: 354, name: 'Landkreis Görlitz', stateId: 14 },
-      { id: 355, name: 'Kreisfreie Stadt Leipzig', stateId: 14 },
-      { id: 356, name: 'Landkreis Leipzig', stateId: 14 },
-      { id: 357, name: 'Landkreis Nordsachsen', stateId: 14 },
-      { id: 358, name: 'Landkreis Mittelsachsen', stateId: 14 },
-      { id: 359, name: 'Vogtlandkreis', stateId: 14 },
-      { id: 360, name: 'Zwickau', stateId: 14 },
-      { id: 361, name: 'Erzgebirgskreis', stateId: 14 },
-      { id: 362, name: 'Chemnitz, Stadt', stateId: 14 }
+      { ags: '14511', name: 'SK Chemnitz', stateAgsPrefix: '14' },
+      {
+        ags: '14521',
+        name: 'LK Erzgebirgskreis',
+        stateAgsPrefix: '14'
+      },
+      { ags: '14522', name: 'LK Mittelsachsen', stateAgsPrefix: '14' },
+      { ags: '14523', name: 'LK Vogtlandkreis', stateAgsPrefix: '14' },
+      { ags: '14524', name: 'LK Zwickau', stateAgsPrefix: '14' },
+      { ags: '14612', name: 'SK Dresden', stateAgsPrefix: '14' },
+      { ags: '14625', name: 'LK Bautzen', stateAgsPrefix: '14' },
+      { ags: '14626', name: 'LK Görlitz', stateAgsPrefix: '14' },
+      { ags: '14627', name: 'LK Meißen', stateAgsPrefix: '14' },
+      {
+        ags: '14628',
+        name: 'LK Sächsische Schweiz-Osterzgebirge',
+        stateAgsPrefix: '14'
+      },
+      { ags: '14713', name: 'SK Leipzig', stateAgsPrefix: '14' },
+      { ags: '14729', name: 'LK Leipzig', stateAgsPrefix: '14' },
+      { ags: '14730', name: 'LK Nordsachsen', stateAgsPrefix: '14' }
     ]
   },
   {
-    id: 15,
+    agsPrefix: '15',
     name: 'Sachsen-Anhalt',
     districts: [
-      { id: 363, name: 'Kreisfreie Stadt Halle', stateId: 15 },
-      { id: 364, name: 'Saalekreis', stateId: 15 },
-      { id: 365, name: 'Mansfeld-Südharz', stateId: 15 },
-      { id: 366, name: 'Landkreis Harz', stateId: 15 },
-      { id: 367, name: 'Anhalt-Bitterfeld', stateId: 15 },
-      { id: 368, name: 'Salzlandkreis', stateId: 15 },
-      { id: 369, name: 'Burgenlandkreis', stateId: 15 },
-      { id: 370, name: 'Landkreis Wittenberg', stateId: 15 },
-      { id: 371, name: 'Dessau-Roßlau', stateId: 15 },
-      { id: 372, name: 'Landkreis Stendal', stateId: 15 },
-      { id: 373, name: 'Altmarkkreis Salzwedel', stateId: 15 },
-      { id: 374, name: 'Landeshauptstadt Magdeburg', stateId: 15 },
-      { id: 375, name: 'Börde', stateId: 15 },
-      { id: 376, name: 'Jerichower Land', stateId: 15 }
+      { ags: '15001', name: 'SK Dessau-Roßlau', stateAgsPrefix: '15' },
+      { ags: '15002', name: 'SK Halle', stateAgsPrefix: '15' },
+      { ags: '15003', name: 'SK Magdeburg', stateAgsPrefix: '15' },
+      {
+        ags: '15081',
+        name: 'LK Altmarkkreis Salzwedel',
+        stateAgsPrefix: '15'
+      },
+      {
+        ags: '15082',
+        name: 'LK Anhalt-Bitterfeld',
+        stateAgsPrefix: '15'
+      },
+      { ags: '15083', name: 'LK Börde', stateAgsPrefix: '15' },
+      {
+        ags: '15084',
+        name: 'LK Burgenlandkreis',
+        stateAgsPrefix: '15'
+      },
+      { ags: '15085', name: 'LK Harz', stateAgsPrefix: '15' },
+      {
+        ags: '15086',
+        name: 'LK Jerichower Land',
+        stateAgsPrefix: '15'
+      },
+      {
+        ags: '15087',
+        name: 'LK Mansfeld-Südharz',
+        stateAgsPrefix: '15'
+      },
+      { ags: '15088', name: 'LK Saalekreis', stateAgsPrefix: '15' },
+      { ags: '15089', name: 'LK Salzlandkreis', stateAgsPrefix: '15' },
+      { ags: '15090', name: 'LK Stendal', stateAgsPrefix: '15' },
+      { ags: '15091', name: 'LK Wittenberg', stateAgsPrefix: '15' }
     ]
   },
   {
-    id: 16,
+    agsPrefix: '16',
     name: 'Thüringen',
     districts: [
-      { id: 377, name: 'Altenburger Land', stateId: 16 },
-      { id: 378, name: 'Kyffhäuserkreis', stateId: 16 },
-      { id: 379, name: 'Landkreis Sömmerda', stateId: 16 },
-      { id: 380, name: 'Saalfeld-Rudolstadt', stateId: 16 },
-      { id: 381, name: 'Saale-Orla-Kreis', stateId: 16 },
-      { id: 382, name: 'Gera, Stadt', stateId: 16 },
-      { id: 383, name: 'Landkreis Greiz', stateId: 16 },
-      { id: 384, name: 'Saale-Holzland-Kreis', stateId: 16 },
-      { id: 385, name: 'Jena, Stadt', stateId: 16 },
-      { id: 386, name: 'Wartburgkreis', stateId: 16 },
-      { id: 387, name: 'Eichsfeld', stateId: 16 },
-      { id: 388, name: 'Landkreis Sonneberg', stateId: 16 },
-      { id: 389, name: 'Suhl, Stadt', stateId: 16 },
+      { ags: '16051', name: 'SK Erfurt', stateAgsPrefix: '16' },
+      { ags: '16052', name: 'SK Gera', stateAgsPrefix: '16' },
+      { ags: '16053', name: 'SK Jena', stateAgsPrefix: '16' },
+      { ags: '16054', name: 'SK Suhl', stateAgsPrefix: '16' },
+      { ags: '16055', name: 'SK Weimar', stateAgsPrefix: '16' },
+      { ags: '16061', name: 'LK Eichsfeld', stateAgsPrefix: '16' },
+      { ags: '16062', name: 'LK Nordhausen', stateAgsPrefix: '16' },
+      { ags: '16063', name: 'LK Wartburgkreis', stateAgsPrefix: '16' },
       {
-        id: 390,
-        name: 'Landkreis Schmalkalden-Meiningen',
-        stateId: 16
+        ags: '16064',
+        name: 'LK Unstrut-Hainich-Kreis',
+        stateAgsPrefix: '16'
       },
-      { id: 391, name: 'Landkreis Hildburghausen', stateId: 16 },
-      { id: 392, name: 'Ilm-Kreis', stateId: 16 },
-      { id: 393, name: 'Erfurt, Stadt', stateId: 16 },
-      { id: 394, name: 'Landkreis Gotha', stateId: 16 },
-      { id: 395, name: 'Weimarer Land', stateId: 16 },
-      { id: 396, name: 'Weimar, Stadt', stateId: 16 },
-      { id: 397, name: 'Landkreis Nordhausen', stateId: 16 },
-      { id: 398, name: 'Eisenach, Stadt', stateId: 16 },
-      { id: 399, name: 'Unstrut-Hainich-Kreis', stateId: 16 }
+      {
+        ags: '16065',
+        name: 'LK Kyffhäuserkreis',
+        stateAgsPrefix: '16'
+      },
+      {
+        ags: '16066',
+        name: 'LK Schmalkalden-Meiningen',
+        stateAgsPrefix: '16'
+      },
+      { ags: '16067', name: 'LK Gotha', stateAgsPrefix: '16' },
+      { ags: '16068', name: 'LK Sömmerda', stateAgsPrefix: '16' },
+      { ags: '16069', name: 'LK Hildburghausen', stateAgsPrefix: '16' },
+      { ags: '16070', name: 'LK Ilm-Kreis', stateAgsPrefix: '16' },
+      { ags: '16071', name: 'LK Weimarer Land', stateAgsPrefix: '16' },
+      { ags: '16072', name: 'LK Sonneberg', stateAgsPrefix: '16' },
+      {
+        ags: '16073',
+        name: 'LK Saalfeld-Rudolstadt',
+        stateAgsPrefix: '16'
+      },
+      {
+        ags: '16074',
+        name: 'LK Saale-Holzland-Kreis',
+        stateAgsPrefix: '16'
+      },
+      {
+        ags: '16075',
+        name: 'LK Saale-Orla-Kreis',
+        stateAgsPrefix: '16'
+      },
+      { ags: '16076', name: 'LK Greiz', stateAgsPrefix: '16' },
+      {
+        ags: '16077',
+        name: 'LK Altenburger Land',
+        stateAgsPrefix: '16'
+      }
+    ]
+  },
+  {
+    agsPrefix: '01',
+    name: 'Schleswig-Holstein',
+    districts: [
+      { ags: '01001', name: 'SK Flensburg', stateAgsPrefix: '01' },
+      { ags: '01002', name: 'SK Kiel', stateAgsPrefix: '01' },
+      { ags: '01003', name: 'SK Lübeck', stateAgsPrefix: '01' },
+      { ags: '01004', name: 'SK Neumünster', stateAgsPrefix: '01' },
+      { ags: '01051', name: 'LK Dithmarschen', stateAgsPrefix: '01' },
+      {
+        ags: '01053',
+        name: 'LK Herzogtum Lauenburg',
+        stateAgsPrefix: '01'
+      },
+      { ags: '01054', name: 'LK Nordfriesland', stateAgsPrefix: '01' },
+      { ags: '01055', name: 'LK Ostholstein', stateAgsPrefix: '01' },
+      { ags: '01056', name: 'LK Pinneberg', stateAgsPrefix: '01' },
+      { ags: '01057', name: 'LK Plön', stateAgsPrefix: '01' },
+      {
+        ags: '01058',
+        name: 'LK Rendsburg-Eckernförde',
+        stateAgsPrefix: '01'
+      },
+      {
+        ags: '01059',
+        name: 'LK Schleswig-Flensburg',
+        stateAgsPrefix: '01'
+      },
+      { ags: '01060', name: 'LK Segeberg', stateAgsPrefix: '01' },
+      { ags: '01061', name: 'LK Steinburg', stateAgsPrefix: '01' },
+      { ags: '01062', name: 'LK Stormarn', stateAgsPrefix: '01' }
+    ]
+  },
+  {
+    agsPrefix: '02',
+    name: 'Hamburg',
+    districts: [ { ags: '02000', name: 'SK Hamburg', stateAgsPrefix: '02' } ]
+  },
+  {
+    agsPrefix: '03',
+    name: 'Niedersachsen',
+    districts: [
+      { ags: '03101', name: 'SK Braunschweig', stateAgsPrefix: '03' },
+      { ags: '03102', name: 'SK Salzgitter', stateAgsPrefix: '03' },
+      { ags: '03103', name: 'SK Wolfsburg', stateAgsPrefix: '03' },
+      { ags: '03151', name: 'LK Gifhorn', stateAgsPrefix: '03' },
+      { ags: '03153', name: 'LK Goslar', stateAgsPrefix: '03' },
+      { ags: '03154', name: 'LK Helmstedt', stateAgsPrefix: '03' },
+      { ags: '03155', name: 'LK Northeim', stateAgsPrefix: '03' },
+      { ags: '03157', name: 'LK Peine', stateAgsPrefix: '03' },
+      { ags: '03158', name: 'LK Wolfenbüttel', stateAgsPrefix: '03' },
+      { ags: '03159', name: 'LK Göttingen', stateAgsPrefix: '03' },
+      { ags: '03241', name: 'Region Hannover', stateAgsPrefix: '03' },
+      { ags: '03251', name: 'LK Diepholz', stateAgsPrefix: '03' },
+      { ags: '03252', name: 'LK Hameln-Pyrmont', stateAgsPrefix: '03' },
+      { ags: '03254', name: 'LK Hildesheim', stateAgsPrefix: '03' },
+      { ags: '03255', name: 'LK Holzminden', stateAgsPrefix: '03' },
+      {
+        ags: '03256',
+        name: 'LK Nienburg (Weser)',
+        stateAgsPrefix: '03'
+      },
+      { ags: '03257', name: 'LK Schaumburg', stateAgsPrefix: '03' },
+      { ags: '03351', name: 'LK Celle', stateAgsPrefix: '03' },
+      { ags: '03352', name: 'LK Cuxhaven', stateAgsPrefix: '03' },
+      { ags: '03353', name: 'LK Harburg', stateAgsPrefix: '03' },
+      {
+        ags: '03354',
+        name: 'LK Lüchow-Dannenberg',
+        stateAgsPrefix: '03'
+      },
+      { ags: '03355', name: 'LK Lüneburg', stateAgsPrefix: '03' },
+      { ags: '03356', name: 'LK Osterholz', stateAgsPrefix: '03' },
+      {
+        ags: '03357',
+        name: 'LK Rotenburg (Wümme)',
+        stateAgsPrefix: '03'
+      },
+      { ags: '03358', name: 'LK Heidekreis', stateAgsPrefix: '03' },
+      { ags: '03359', name: 'LK Stade', stateAgsPrefix: '03' },
+      { ags: '03360', name: 'LK Uelzen', stateAgsPrefix: '03' },
+      { ags: '03361', name: 'LK Verden', stateAgsPrefix: '03' },
+      { ags: '03401', name: 'SK Delmenhorst', stateAgsPrefix: '03' },
+      { ags: '03402', name: 'SK Emden', stateAgsPrefix: '03' },
+      { ags: '03403', name: 'SK Oldenburg', stateAgsPrefix: '03' },
+      { ags: '03404', name: 'SK Osnabrück', stateAgsPrefix: '03' },
+      { ags: '03405', name: 'SK Wilhelmshaven', stateAgsPrefix: '03' },
+      { ags: '03451', name: 'LK Ammerland', stateAgsPrefix: '03' },
+      { ags: '03452', name: 'LK Aurich', stateAgsPrefix: '03' },
+      { ags: '03453', name: 'LK Cloppenburg', stateAgsPrefix: '03' },
+      { ags: '03454', name: 'LK Emsland', stateAgsPrefix: '03' },
+      { ags: '03455', name: 'LK Friesland', stateAgsPrefix: '03' },
+      {
+        ags: '03456',
+        name: 'LK Grafschaft Bentheim',
+        stateAgsPrefix: '03'
+      },
+      { ags: '03457', name: 'LK Leer', stateAgsPrefix: '03' },
+      { ags: '03458', name: 'LK Oldenburg', stateAgsPrefix: '03' },
+      { ags: '03459', name: 'LK Osnabrück', stateAgsPrefix: '03' },
+      { ags: '03460', name: 'LK Vechta', stateAgsPrefix: '03' },
+      { ags: '03461', name: 'LK Wesermarsch', stateAgsPrefix: '03' },
+      { ags: '03462', name: 'LK Wittmund', stateAgsPrefix: '03' }
+    ]
+  },
+  {
+    agsPrefix: '04',
+    name: 'Bremen',
+    districts: [
+      { ags: '04011', name: 'SK Bremen', stateAgsPrefix: '04' },
+      { ags: '04012', name: 'SK Bremerhaven', stateAgsPrefix: '04' }
+    ]
+  },
+  {
+    agsPrefix: '05',
+    name: 'Nordrhein-Westfalen',
+    districts: [
+      { ags: '05111', name: 'SK Düsseldorf', stateAgsPrefix: '05' },
+      { ags: '05112', name: 'SK Duisburg', stateAgsPrefix: '05' },
+      { ags: '05113', name: 'SK Essen', stateAgsPrefix: '05' },
+      { ags: '05114', name: 'SK Krefeld', stateAgsPrefix: '05' },
+      {
+        ags: '05116',
+        name: 'SK Mönchengladbach',
+        stateAgsPrefix: '05'
+      },
+      {
+        ags: '05117',
+        name: 'SK Mülheim a.d.Ruhr',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05119', name: 'SK Oberhausen', stateAgsPrefix: '05' },
+      { ags: '05120', name: 'SK Remscheid', stateAgsPrefix: '05' },
+      { ags: '05122', name: 'SK Solingen', stateAgsPrefix: '05' },
+      { ags: '05124', name: 'SK Wuppertal', stateAgsPrefix: '05' },
+      { ags: '05154', name: 'LK Kleve', stateAgsPrefix: '05' },
+      { ags: '05158', name: 'LK Mettmann', stateAgsPrefix: '05' },
+      {
+        ags: '05162',
+        name: 'LK Rhein-Kreis Neuss',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05166', name: 'LK Viersen', stateAgsPrefix: '05' },
+      { ags: '05170', name: 'LK Wesel', stateAgsPrefix: '05' },
+      { ags: '05314', name: 'SK Bonn', stateAgsPrefix: '05' },
+      { ags: '05315', name: 'SK Köln', stateAgsPrefix: '05' },
+      { ags: '05316', name: 'SK Leverkusen', stateAgsPrefix: '05' },
+      {
+        ags: '05334',
+        name: 'StädteRegion Aachen',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05358', name: 'LK Düren', stateAgsPrefix: '05' },
+      {
+        ags: '05362',
+        name: 'LK Rhein-Erft-Kreis',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05366', name: 'LK Euskirchen', stateAgsPrefix: '05' },
+      { ags: '05370', name: 'LK Heinsberg', stateAgsPrefix: '05' },
+      {
+        ags: '05374',
+        name: 'LK Oberbergischer Kreis',
+        stateAgsPrefix: '05'
+      },
+      {
+        ags: '05378',
+        name: 'LK Rheinisch-Bergischer Kreis',
+        stateAgsPrefix: '05'
+      },
+      {
+        ags: '05382',
+        name: 'LK Rhein-Sieg-Kreis',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05512', name: 'SK Bottrop', stateAgsPrefix: '05' },
+      { ags: '05513', name: 'SK Gelsenkirchen', stateAgsPrefix: '05' },
+      { ags: '05515', name: 'SK Münster', stateAgsPrefix: '05' },
+      { ags: '05554', name: 'LK Borken', stateAgsPrefix: '05' },
+      { ags: '05558', name: 'LK Coesfeld', stateAgsPrefix: '05' },
+      { ags: '05562', name: 'LK Recklinghausen', stateAgsPrefix: '05' },
+      { ags: '05566', name: 'LK Steinfurt', stateAgsPrefix: '05' },
+      { ags: '05570', name: 'LK Warendorf', stateAgsPrefix: '05' },
+      { ags: '05711', name: 'SK Bielefeld', stateAgsPrefix: '05' },
+      { ags: '05754', name: 'LK Gütersloh', stateAgsPrefix: '05' },
+      { ags: '05758', name: 'LK Herford', stateAgsPrefix: '05' },
+      { ags: '05762', name: 'LK Höxter', stateAgsPrefix: '05' },
+      { ags: '05766', name: 'LK Lippe', stateAgsPrefix: '05' },
+      {
+        ags: '05770',
+        name: 'LK Minden-Lübbecke',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05774', name: 'LK Paderborn', stateAgsPrefix: '05' },
+      { ags: '05911', name: 'SK Bochum', stateAgsPrefix: '05' },
+      { ags: '05913', name: 'SK Dortmund', stateAgsPrefix: '05' },
+      { ags: '05914', name: 'SK Hagen', stateAgsPrefix: '05' },
+      { ags: '05915', name: 'SK Hamm', stateAgsPrefix: '05' },
+      { ags: '05916', name: 'SK Herne', stateAgsPrefix: '05' },
+      {
+        ags: '05954',
+        name: 'LK Ennepe-Ruhr-Kreis',
+        stateAgsPrefix: '05'
+      },
+      {
+        ags: '05958',
+        name: 'LK Hochsauerlandkreis',
+        stateAgsPrefix: '05'
+      },
+      {
+        ags: '05962',
+        name: 'LK Märkischer Kreis',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05966', name: 'LK Olpe', stateAgsPrefix: '05' },
+      {
+        ags: '05970',
+        name: 'LK Siegen-Wittgenstein',
+        stateAgsPrefix: '05'
+      },
+      { ags: '05974', name: 'LK Soest', stateAgsPrefix: '05' },
+      { ags: '05978', name: 'LK Unna', stateAgsPrefix: '05' }
+    ]
+  },
+  {
+    agsPrefix: '06',
+    name: 'Hessen',
+    districts: [
+      { ags: '06411', name: 'SK Darmstadt', stateAgsPrefix: '06' },
+      {
+        ags: '06412',
+        name: 'SK Frankfurt am Main',
+        stateAgsPrefix: '06'
+      },
+      { ags: '06413', name: 'SK Offenbach', stateAgsPrefix: '06' },
+      { ags: '06414', name: 'SK Wiesbaden', stateAgsPrefix: '06' },
+      { ags: '06431', name: 'LK Bergstraße', stateAgsPrefix: '06' },
+      {
+        ags: '06432',
+        name: 'LK Darmstadt-Dieburg',
+        stateAgsPrefix: '06'
+      },
+      { ags: '06433', name: 'LK Groß-Gerau', stateAgsPrefix: '06' },
+      {
+        ags: '06434',
+        name: 'LK Hochtaunuskreis',
+        stateAgsPrefix: '06'
+      },
+      {
+        ags: '06435',
+        name: 'LK Main-Kinzig-Kreis',
+        stateAgsPrefix: '06'
+      },
+      {
+        ags: '06436',
+        name: 'LK Main-Taunus-Kreis',
+        stateAgsPrefix: '06'
+      },
+      { ags: '06437', name: 'LK Odenwaldkreis', stateAgsPrefix: '06' },
+      { ags: '06438', name: 'LK Offenbach', stateAgsPrefix: '06' },
+      {
+        ags: '06439',
+        name: 'LK Rheingau-Taunus-Kreis',
+        stateAgsPrefix: '06'
+      },
+      { ags: '06440', name: 'LK Wetteraukreis', stateAgsPrefix: '06' },
+      { ags: '06531', name: 'LK Gießen', stateAgsPrefix: '06' },
+      {
+        ags: '06532',
+        name: 'LK Lahn-Dill-Kreis',
+        stateAgsPrefix: '06'
+      },
+      {
+        ags: '06533',
+        name: 'LK Limburg-Weilburg',
+        stateAgsPrefix: '06'
+      },
+      {
+        ags: '06534',
+        name: 'LK Marburg-Biedenkopf',
+        stateAgsPrefix: '06'
+      },
+      {
+        ags: '06535',
+        name: 'LK Vogelsbergkreis',
+        stateAgsPrefix: '06'
+      },
+      { ags: '06611', name: 'SK Kassel', stateAgsPrefix: '06' },
+      { ags: '06631', name: 'LK Fulda', stateAgsPrefix: '06' },
+      {
+        ags: '06632',
+        name: 'LK Hersfeld-Rotenburg',
+        stateAgsPrefix: '06'
+      },
+      { ags: '06633', name: 'LK Kassel', stateAgsPrefix: '06' },
+      {
+        ags: '06634',
+        name: 'LK Schwalm-Eder-Kreis',
+        stateAgsPrefix: '06'
+      },
+      {
+        ags: '06635',
+        name: 'LK Waldeck-Frankenberg',
+        stateAgsPrefix: '06'
+      },
+      {
+        ags: '06636',
+        name: 'LK Werra-Meißner-Kreis',
+        stateAgsPrefix: '06'
+      }
+    ]
+  },
+  {
+    agsPrefix: '07',
+    name: 'Rheinland-Pfalz',
+    districts: [
+      { ags: '07111', name: 'SK Koblenz', stateAgsPrefix: '07' },
+      { ags: '07131', name: 'LK Ahrweiler', stateAgsPrefix: '07' },
+      { ags: '07132', name: 'LK Altenkirchen', stateAgsPrefix: '07' },
+      { ags: '07133', name: 'LK Bad Kreuznach', stateAgsPrefix: '07' },
+      { ags: '07134', name: 'LK Birkenfeld', stateAgsPrefix: '07' },
+      { ags: '07135', name: 'LK Cochem-Zell', stateAgsPrefix: '07' },
+      { ags: '07137', name: 'LK Mayen-Koblenz', stateAgsPrefix: '07' },
+      { ags: '07138', name: 'LK Neuwied', stateAgsPrefix: '07' },
+      {
+        ags: '07140',
+        name: 'LK Rhein-Hunsrück-Kreis',
+        stateAgsPrefix: '07'
+      },
+      {
+        ags: '07141',
+        name: 'LK Rhein-Lahn-Kreis',
+        stateAgsPrefix: '07'
+      },
+      {
+        ags: '07143',
+        name: 'LK Westerwaldkreis',
+        stateAgsPrefix: '07'
+      },
+      { ags: '07211', name: 'SK Trier', stateAgsPrefix: '07' },
+      {
+        ags: '07231',
+        name: 'LK Bernkastel-Wittlich',
+        stateAgsPrefix: '07'
+      },
+      { ags: '07232', name: 'LK Bitburg-Prüm', stateAgsPrefix: '07' },
+      { ags: '07233', name: 'LK Vulkaneifel', stateAgsPrefix: '07' },
+      { ags: '07235', name: 'LK Trier-Saarburg', stateAgsPrefix: '07' },
+      { ags: '07311', name: 'SK Frankenthal', stateAgsPrefix: '07' },
+      { ags: '07312', name: 'SK Kaiserslautern', stateAgsPrefix: '07' },
+      {
+        ags: '07313',
+        name: 'SK Landau i.d.Pfalz',
+        stateAgsPrefix: '07'
+      },
+      { ags: '07314', name: 'SK Ludwigshafen', stateAgsPrefix: '07' },
+      { ags: '07315', name: 'SK Mainz', stateAgsPrefix: '07' },
+      {
+        ags: '07316',
+        name: 'SK Neustadt a.d.Weinstraße',
+        stateAgsPrefix: '07'
+      },
+      { ags: '07317', name: 'SK Pirmasens', stateAgsPrefix: '07' },
+      { ags: '07318', name: 'SK Speyer', stateAgsPrefix: '07' },
+      { ags: '07319', name: 'SK Worms', stateAgsPrefix: '07' },
+      { ags: '07320', name: 'SK Zweibrücken', stateAgsPrefix: '07' },
+      { ags: '07331', name: 'LK Alzey-Worms', stateAgsPrefix: '07' },
+      { ags: '07332', name: 'LK Bad Dürkheim', stateAgsPrefix: '07' },
+      {
+        ags: '07333',
+        name: 'LK Donnersbergkreis',
+        stateAgsPrefix: '07'
+      },
+      { ags: '07334', name: 'LK Germersheim', stateAgsPrefix: '07' },
+      { ags: '07335', name: 'LK Kaiserslautern', stateAgsPrefix: '07' },
+      { ags: '07336', name: 'LK Kusel', stateAgsPrefix: '07' },
+      {
+        ags: '07337',
+        name: 'LK Südliche Weinstraße',
+        stateAgsPrefix: '07'
+      },
+      {
+        ags: '07338',
+        name: 'LK Rhein-Pfalz-Kreis',
+        stateAgsPrefix: '07'
+      },
+      { ags: '07339', name: 'LK Mainz-Bingen', stateAgsPrefix: '07' },
+      { ags: '07340', name: 'LK Südwestpfalz', stateAgsPrefix: '07' }
+    ]
+  },
+  {
+    agsPrefix: '08',
+    name: 'Baden-Württemberg',
+    districts: [
+      { ags: '08111', name: 'SK Stuttgart', stateAgsPrefix: '08' },
+      { ags: '08115', name: 'LK Böblingen', stateAgsPrefix: '08' },
+      { ags: '08116', name: 'LK Esslingen', stateAgsPrefix: '08' },
+      { ags: '08117', name: 'LK Göppingen', stateAgsPrefix: '08' },
+      { ags: '08118', name: 'LK Ludwigsburg', stateAgsPrefix: '08' },
+      {
+        ags: '08119',
+        name: 'LK Rems-Murr-Kreis',
+        stateAgsPrefix: '08'
+      },
+      { ags: '08121', name: 'SK Heilbronn', stateAgsPrefix: '08' },
+      { ags: '08125', name: 'LK Heilbronn', stateAgsPrefix: '08' },
+      { ags: '08126', name: 'LK Hohenlohekreis', stateAgsPrefix: '08' },
+      {
+        ags: '08127',
+        name: 'LK Schwäbisch Hall',
+        stateAgsPrefix: '08'
+      },
+      {
+        ags: '08128',
+        name: 'LK Main-Tauber-Kreis',
+        stateAgsPrefix: '08'
+      },
+      { ags: '08135', name: 'LK Heidenheim', stateAgsPrefix: '08' },
+      { ags: '08136', name: 'LK Ostalbkreis', stateAgsPrefix: '08' },
+      { ags: '08211', name: 'SK Baden-Baden', stateAgsPrefix: '08' },
+      { ags: '08212', name: 'SK Karlsruhe', stateAgsPrefix: '08' },
+      { ags: '08215', name: 'LK Karlsruhe', stateAgsPrefix: '08' },
+      { ags: '08216', name: 'LK Rastatt', stateAgsPrefix: '08' },
+      { ags: '08221', name: 'SK Heidelberg', stateAgsPrefix: '08' },
+      { ags: '08222', name: 'SK Mannheim', stateAgsPrefix: '08' },
+      {
+        ags: '08225',
+        name: 'LK Neckar-Odenwald-Kreis',
+        stateAgsPrefix: '08'
+      },
+      {
+        ags: '08226',
+        name: 'LK Rhein-Neckar-Kreis',
+        stateAgsPrefix: '08'
+      },
+      { ags: '08231', name: 'SK Pforzheim', stateAgsPrefix: '08' },
+      { ags: '08235', name: 'LK Calw', stateAgsPrefix: '08' },
+      { ags: '08236', name: 'LK Enzkreis', stateAgsPrefix: '08' },
+      { ags: '08237', name: 'LK Freudenstadt', stateAgsPrefix: '08' },
+      {
+        ags: '08311',
+        name: 'SK Freiburg i.Breisgau',
+        stateAgsPrefix: '08'
+      },
+      {
+        ags: '08315',
+        name: 'LK Breisgau-Hochschwarzwald',
+        stateAgsPrefix: '08'
+      },
+      { ags: '08316', name: 'LK Emmendingen', stateAgsPrefix: '08' },
+      { ags: '08317', name: 'LK Ortenaukreis', stateAgsPrefix: '08' },
+      { ags: '08325', name: 'LK Rottweil', stateAgsPrefix: '08' },
+      {
+        ags: '08326',
+        name: 'LK Schwarzwald-Baar-Kreis',
+        stateAgsPrefix: '08'
+      },
+      { ags: '08327', name: 'LK Tuttlingen', stateAgsPrefix: '08' },
+      { ags: '08335', name: 'LK Konstanz', stateAgsPrefix: '08' },
+      { ags: '08336', name: 'LK Lörrach', stateAgsPrefix: '08' },
+      { ags: '08337', name: 'LK Waldshut', stateAgsPrefix: '08' },
+      { ags: '08415', name: 'LK Reutlingen', stateAgsPrefix: '08' },
+      { ags: '08416', name: 'LK Tübingen', stateAgsPrefix: '08' },
+      {
+        ags: '08417',
+        name: 'LK Zollernalbkreis',
+        stateAgsPrefix: '08'
+      },
+      { ags: '08421', name: 'SK Ulm', stateAgsPrefix: '08' },
+      {
+        ags: '08425',
+        name: 'LK Alb-Donau-Kreis',
+        stateAgsPrefix: '08'
+      },
+      { ags: '08426', name: 'LK Biberach', stateAgsPrefix: '08' },
+      { ags: '08435', name: 'LK Bodenseekreis', stateAgsPrefix: '08' },
+      { ags: '08436', name: 'LK Ravensburg', stateAgsPrefix: '08' },
+      { ags: '08437', name: 'LK Sigmaringen', stateAgsPrefix: '08' }
+    ]
+  },
+  {
+    agsPrefix: '09',
+    name: 'Bayern',
+    districts: [
+      { ags: '09161', name: 'SK Ingolstadt', stateAgsPrefix: '09' },
+      { ags: '09162', name: 'SK München', stateAgsPrefix: '09' },
+      { ags: '09163', name: 'SK Rosenheim', stateAgsPrefix: '09' },
+      { ags: '09171', name: 'LK Altötting', stateAgsPrefix: '09' },
+      {
+        ags: '09172',
+        name: 'LK Berchtesgadener Land',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09173',
+        name: 'LK Bad Tölz-Wolfratshausen',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09174', name: 'LK Dachau', stateAgsPrefix: '09' },
+      { ags: '09175', name: 'LK Ebersberg', stateAgsPrefix: '09' },
+      { ags: '09176', name: 'LK Eichstätt', stateAgsPrefix: '09' },
+      { ags: '09177', name: 'LK Erding', stateAgsPrefix: '09' },
+      { ags: '09178', name: 'LK Freising', stateAgsPrefix: '09' },
+      {
+        ags: '09179',
+        name: 'LK Fürstenfeldbruck',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09180',
+        name: 'LK Garmisch-Partenkirchen',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09181',
+        name: 'LK Landsberg a.Lech',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09182', name: 'LK Miesbach', stateAgsPrefix: '09' },
+      { ags: '09183', name: 'LK Mühldorf a.Inn', stateAgsPrefix: '09' },
+      { ags: '09184', name: 'LK München', stateAgsPrefix: '09' },
+      {
+        ags: '09185',
+        name: 'LK Neuburg-Schrobenhausen',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09186',
+        name: 'LK Pfaffenhofen a.d.Ilm',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09187', name: 'LK Rosenheim', stateAgsPrefix: '09' },
+      { ags: '09188', name: 'LK Starnberg', stateAgsPrefix: '09' },
+      { ags: '09189', name: 'LK Traunstein', stateAgsPrefix: '09' },
+      {
+        ags: '09190',
+        name: 'LK Weilheim-Schongau',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09261', name: 'SK Landshut', stateAgsPrefix: '09' },
+      { ags: '09262', name: 'SK Passau', stateAgsPrefix: '09' },
+      { ags: '09263', name: 'SK Straubing', stateAgsPrefix: '09' },
+      { ags: '09271', name: 'LK Deggendorf', stateAgsPrefix: '09' },
+      {
+        ags: '09272',
+        name: 'LK Freyung-Grafenau',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09273', name: 'LK Kelheim', stateAgsPrefix: '09' },
+      { ags: '09274', name: 'LK Landshut', stateAgsPrefix: '09' },
+      { ags: '09275', name: 'LK Passau', stateAgsPrefix: '09' },
+      { ags: '09276', name: 'LK Regen', stateAgsPrefix: '09' },
+      { ags: '09277', name: 'LK Rottal-Inn', stateAgsPrefix: '09' },
+      {
+        ags: '09278',
+        name: 'LK Straubing-Bogen',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09279',
+        name: 'LK Dingolfing-Landau',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09361', name: 'SK Amberg', stateAgsPrefix: '09' },
+      { ags: '09362', name: 'SK Regensburg', stateAgsPrefix: '09' },
+      {
+        ags: '09363',
+        name: 'SK Weiden i.d.OPf.',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09371',
+        name: 'LK Amberg-Sulzbach',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09372', name: 'LK Cham', stateAgsPrefix: '09' },
+      {
+        ags: '09373',
+        name: 'LK Neumarkt i.d.OPf.',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09374',
+        name: 'LK Neustadt a.d.Waldnaab',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09375', name: 'LK Regensburg', stateAgsPrefix: '09' },
+      { ags: '09376', name: 'LK Schwandorf', stateAgsPrefix: '09' },
+      { ags: '09377', name: 'LK Tirschenreuth', stateAgsPrefix: '09' },
+      { ags: '09461', name: 'SK Bamberg', stateAgsPrefix: '09' },
+      { ags: '09462', name: 'SK Bayreuth', stateAgsPrefix: '09' },
+      { ags: '09463', name: 'SK Coburg', stateAgsPrefix: '09' },
+      { ags: '09464', name: 'SK Hof', stateAgsPrefix: '09' },
+      { ags: '09471', name: 'LK Bamberg', stateAgsPrefix: '09' },
+      { ags: '09472', name: 'LK Bayreuth', stateAgsPrefix: '09' },
+      { ags: '09473', name: 'LK Coburg', stateAgsPrefix: '09' },
+      { ags: '09474', name: 'LK Forchheim', stateAgsPrefix: '09' },
+      { ags: '09475', name: 'LK Hof', stateAgsPrefix: '09' },
+      { ags: '09476', name: 'LK Kronach', stateAgsPrefix: '09' },
+      { ags: '09477', name: 'LK Kulmbach', stateAgsPrefix: '09' },
+      { ags: '09478', name: 'LK Lichtenfels', stateAgsPrefix: '09' },
+      {
+        ags: '09479',
+        name: 'LK Wunsiedel i.Fichtelgebirge',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09561', name: 'SK Ansbach', stateAgsPrefix: '09' },
+      { ags: '09562', name: 'SK Erlangen', stateAgsPrefix: '09' },
+      { ags: '09563', name: 'SK Fürth', stateAgsPrefix: '09' },
+      { ags: '09564', name: 'SK Nürnberg', stateAgsPrefix: '09' },
+      { ags: '09565', name: 'SK Schwabach', stateAgsPrefix: '09' },
+      { ags: '09571', name: 'LK Ansbach', stateAgsPrefix: '09' },
+      {
+        ags: '09572',
+        name: 'LK Erlangen-Höchstadt',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09573', name: 'LK Fürth', stateAgsPrefix: '09' },
+      {
+        ags: '09574',
+        name: 'LK Nürnberger Land',
+        stateAgsPrefix: '09'
+      },
+      {
+        ags: '09575',
+        name: 'LK Neustadt a.d.Aisch-Bad Windsheim',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09576', name: 'LK Roth', stateAgsPrefix: '09' },
+      {
+        ags: '09577',
+        name: 'LK Weißenburg-Gunzenhausen',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09661', name: 'SK Aschaffenburg', stateAgsPrefix: '09' },
+      { ags: '09662', name: 'SK Schweinfurt', stateAgsPrefix: '09' },
+      { ags: '09663', name: 'SK Würzburg', stateAgsPrefix: '09' },
+      { ags: '09671', name: 'LK Aschaffenburg', stateAgsPrefix: '09' },
+      { ags: '09672', name: 'LK Bad Kissingen', stateAgsPrefix: '09' },
+      { ags: '09673', name: 'LK Rhön-Grabfeld', stateAgsPrefix: '09' },
+      { ags: '09674', name: 'LK Haßberge', stateAgsPrefix: '09' },
+      { ags: '09675', name: 'LK Kitzingen', stateAgsPrefix: '09' },
+      { ags: '09676', name: 'LK Miltenberg', stateAgsPrefix: '09' },
+      { ags: '09677', name: 'LK Main-Spessart', stateAgsPrefix: '09' },
+      { ags: '09678', name: 'LK Schweinfurt', stateAgsPrefix: '09' },
+      { ags: '09679', name: 'LK Würzburg', stateAgsPrefix: '09' },
+      { ags: '09761', name: 'SK Augsburg', stateAgsPrefix: '09' },
+      { ags: '09762', name: 'SK Kaufbeuren', stateAgsPrefix: '09' },
+      { ags: '09763', name: 'SK Kempten', stateAgsPrefix: '09' },
+      { ags: '09764', name: 'SK Memmingen', stateAgsPrefix: '09' },
+      {
+        ags: '09771',
+        name: 'LK Aichach-Friedberg',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09772', name: 'LK Augsburg', stateAgsPrefix: '09' },
+      {
+        ags: '09773',
+        name: 'LK Dillingen a.d.Donau',
+        stateAgsPrefix: '09'
+      },
+      { ags: '09774', name: 'LK Günzburg', stateAgsPrefix: '09' },
+      { ags: '09775', name: 'LK Neu-Ulm', stateAgsPrefix: '09' },
+      { ags: '09776', name: 'LK Lindau', stateAgsPrefix: '09' },
+      { ags: '09777', name: 'LK Ostallgäu', stateAgsPrefix: '09' },
+      { ags: '09778', name: 'LK Unterallgäu', stateAgsPrefix: '09' },
+      { ags: '09779', name: 'LK Donau-Ries', stateAgsPrefix: '09' },
+      { ags: '09780', name: 'LK Oberallgäu', stateAgsPrefix: '09' }
     ]
   }
 ]
-Done in 3.03s.
+Done in 2.78s.
 ```
 
 ## Sources
 
-data/german-postal-codes.json:
-[https://www.wiwald.com/ds/kostenlose-liste-deutscher-postleitzahlen-und-zugehoeriger-orte/id/ww-german-postal-codes](https://www.wiwald.com/ds/kostenlose-liste-deutscher-postleitzahlen-und-zugehoeriger-orte/id/ww-german-postal-codes) (CC BY 4.0)
+data/corona-api-06-04-2022.json (visited on April 6th 2022):
+[https://api.corona-zahlen.org/districts](https://api.corona-zahlen.org/districts) (CC BY 4.0)

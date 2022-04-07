@@ -14,7 +14,7 @@ export interface District {
 }
 
 // The main function, which is called by the cli (load-german-states-and-districts.ts)
-export async function main(apiUrl?:string, filePath?:string, stateKey='state', districtKey='county', consoleOutput: boolean = false) {
+export async function main(apiUrl?:string, filePath?:string, stateKey='state', districtKey='county', verbose: boolean = false) {
     if (apiUrl) {
         // Makes a http request to the corona API and passes on the response body to evaluateJsonObject()
         await https.get(apiUrl, async res=> {
@@ -27,8 +27,8 @@ export async function main(apiUrl?:string, filePath?:string, stateKey='state', d
             res.on('end', async () => {
                 const corona = JSON.parse(Buffer.concat(data).toString());
 
-                await writeToDatabase(evaluateJsonObject(corona.data, stateKey, districtKey), consoleOutput)
-                return await logStates(consoleOutput);
+                await writeToDatabase(evaluateJsonObject(corona.data, stateKey, districtKey), verbose)
+                return await logStates(verbose);
             });
         }).on('error', err => {
             console.log('Error: ', err.message);
@@ -37,8 +37,8 @@ export async function main(apiUrl?:string, filePath?:string, stateKey='state', d
         // Imports the districts from the specified file and passes them on to evaluateJsonObject()
         const localities = await import(filePath).then(module => module.default);
 
-        await writeToDatabase(evaluateJsonObject(localities.data, stateKey, districtKey), consoleOutput)
-        return await logStates(consoleOutput);
+        await writeToDatabase(evaluateJsonObject(localities.data, stateKey, districtKey), verbose)
+        return await logStates(verbose);
     }
 }
 
@@ -99,15 +99,15 @@ export function evaluateJsonObject(jsonObject: Object, stateKey: string, distric
 
 // Intelligently write the states and districts to the database
 // TODO needs to be tested but that requires a database mock
-export async function writeToDatabase(data: {states: any[], districts: any[]}, consoleOutput = false) {
+export async function writeToDatabase(data: {states: any[], districts: any[]}, verbose = false) {
     const currentDistricts = await prisma.district.findMany()
     const currentStates = await prisma.state.findMany()
 
     // Sort the new states and districts into the categories create, update and delete
     const createDistricts = data.districts.filter(district => currentDistricts.filter(filterDistrict => filterDistrict.ags == district.ags).length == 0)
     const createStates = data.states.filter(state => currentStates.filter(filterState => filterState.agsPrefix == state.agsPrefix).length == 0)
-    const updateStates = data.states.filter(state => currentStates.filter(filterState => filterState.agsPrefix == state.agsPrefix).length > 0)
-    const updateDistricts = data.districts.filter(district => currentDistricts.filter(filterDistrict => filterDistrict.ags == district.ags).length > 0)
+    const updateStates = data.states.filter(state => currentStates.filter(filterState => filterState.agsPrefix == state.agsPrefix && filterState.name != state.name).length > 0)
+    const updateDistricts = data.districts.filter(district => currentDistricts.filter(filterDistrict => filterDistrict.ags == district.ags  && (filterDistrict.name != district.name || filterDistrict.stateAgsPrefix != district.stateAgsPrefix)).length > 0)
     const deleteDistricts = currentDistricts.filter(district => data.districts.filter(filterDistrict => filterDistrict.ags == district.ags).length == 0)
     const deleteStates = currentStates.filter(state => data.states.filter(filterState => filterState.agsPrefix == state.agsPrefix).length == 0)
 
@@ -126,7 +126,7 @@ export async function writeToDatabase(data: {states: any[], districts: any[]}, c
             }
         }
     })
-    consoleOutput && console.log('Deleted ' + deleteDistricts.length + ' districts and ' + deleteStates.length + ' states')
+    verbose && console.log('Deleted ' + deleteStates.length + ' states and ' + deleteDistricts.length + ' districts')
     // Update the states and districts that are in the new data
     for (const state of updateStates) {
         await prisma.state.update({
@@ -149,7 +149,7 @@ export async function writeToDatabase(data: {states: any[], districts: any[]}, c
             }
         })
     }
-    consoleOutput && console.log('Updated ' + updateStates.length + ' states and ' + updateDistricts.length + ' districts')
+    verbose && console.log('Updated ' + updateStates.length + ' states and ' + updateDistricts.length + ' districts')
     // Write all new states and districts to the database
     await prisma.state.createMany({
         data: createStates
@@ -157,17 +157,18 @@ export async function writeToDatabase(data: {states: any[], districts: any[]}, c
     await prisma.district.createMany({
         data: createDistricts
     })
-    consoleOutput && console.log('Created ' + createStates.length + ' states and ' + createDistricts.length + ' districts')
+    verbose && console.log('Created ' + createStates.length + ' states and ' + createDistricts.length + ' districts')
 }
 
-export async function logStates(consoleOutput: boolean) {
+export async function logStates(verbose: boolean) {
     // Get all states together with their districts and log them
     const allStates = await prisma.state.findMany({
         include: {
             districts: true,
         }
     })
-    if (consoleOutput) {
+    if (verbose) {
+        console.log('\nAll states with their districts:')
         console.dir(allStates, {depth: null})
     } else {
         return allStates

@@ -7,10 +7,10 @@ program
     .description('CLI tool to populate the migrated states and district tables with data.')
     .version('0.5.0')
     .option('-u, --url <char>', 'the url of an API with the districts and their states (e.g. https://api.corona-zahlen.org/districts)', null)
-    .option('-f, --file <char>', 'the path to the file with the districts and their states', 'data/corona-api-6-4-2022.json')
+    .option('-f, --file <char>', 'the path to the file with the districts and their states', 'data/corona-api-06-04-2022.json')
     .option('-s, --stateKey <char>', 'the key of the objects that holds the state name', 'state')
     .option('-d, --districtKey <char>', 'the key of the objects that holds the district name', 'county')
-    .option('--output', 'whether to log the resulting database');
+    .option('-v --verbose', 'whether to log the resulting database');
 
 
 program.parse();
@@ -18,8 +18,8 @@ program.parse();
 const options = program.opts();
 
 if (options.url) {
-    main(options.url, '', options.stateKey, options.districtKey, options.output).catch((e) => {throw e}).finally(async () => {await prisma.$disconnect()})
+    main(options.url, '', options.stateKey, options.districtKey, options.verbose).catch((e) => {throw e}).finally(async () => {await prisma.$disconnect()})
 } else {
-    main(null, '../' + options.file, options.stateKey, options.districtKey, options.output).catch((e) => {throw e}).finally(async () => {await prisma.$disconnect()})
+    main(null, '../' + options.file, options.stateKey, options.districtKey, options.verbose).catch((e) => {throw e}).finally(async () => {await prisma.$disconnect()})
 }
 
