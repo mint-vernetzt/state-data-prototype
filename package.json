@@ -1,6 +1,6 @@
 {
   "name": "german-states-districts-dataset",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "This is a package for loading the german states and districts. It holds a prisma schema as well as a cli tool to populate the database.",
   "main": "load-german-states-and-districts.ts",
   "scripts": {

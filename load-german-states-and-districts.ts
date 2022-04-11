@@ -5,7 +5,7 @@ import prisma from "./src/client";
 program
     .name('german-states-and-districts-dataset-generator')
     .description('CLI tool to populate the migrated states and district tables with data.')
-    .version('0.5.0')
+    .version('1.0.0')
     .option('-u, --url <char>', 'the url of an API with the districts and their states (e.g. https://api.corona-zahlen.org/districts)', null)
     .option('-f, --file <char>', 'the path to the file with the districts and their states', 'data/corona-api-06-04-2022.json')
     .option('-s, --stateKey <char>', 'the key of the objects that holds the state name', 'state')
