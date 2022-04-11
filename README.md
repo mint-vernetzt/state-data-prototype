@@ -3,12 +3,12 @@
 ## How to use this package
 1. Edit the ```DATABASE_URL``` in the .env to point to your database
 2. Run ```prisma migrate reset```or ```prisma migrate dev --create_state_and_district_model_and_relationship```
-3. Run ```yarn start``` (run yarn start --help for options)
+3. Run ```npm start``` (run ```npm start -- --help``` for options)
 4. Check you database (and hopefully be happy)
 
 ## Sample output
 ``` bash
-user@host:~/.../german-states-and-districts-dataset$ yarn start --verbose
+user@host:~/.../german-states-and-districts-dataset$ npm start -- --verbose
 yarn run v1.22.18
 $ ts-node load-german-states-and-districts.ts --verbose
 Deleted 0 states and 0 districts
