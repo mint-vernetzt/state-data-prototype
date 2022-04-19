@@ -9,7 +9,6 @@
 ## Sample output
 ``` bash
 user@host:~/.../german-states-and-districts-dataset$ npm start -- --verbose
-yarn run v1.22.18
 $ ts-node load-german-states-and-districts.ts --verbose
 Deleted 0 states and 0 districts
 Updated 0 states and 0 districts
