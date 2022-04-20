@@ -1,10 +1,16 @@
 # State-data-prototype
 
-## How to use this package
-1. Edit the ```DATABASE_URL``` in the .env to point to your database
-2. Run ```prisma migrate reset```or ```prisma migrate dev --create_state_and_district_model_and_relationship```
-3. Run ```npm start``` (run ```npm start -- --help``` for options)
-4. Check you database (and hopefully be happy)
+## How to use the package yourself
+1. Clone the repository from [GitHub](https://github.com/mint-vernetzt/state-data-prototype)
+2. Create a .env file in the root directory of the repository
+3. Edit the .env file to set the following variables:
+``` bash
+# .env
+DATABASE_URL="dbtype://password:username@localhost:port/german_states_districts?schema=public"
+```
+4. Run `prisma migrate dev --create_state_and_district_model_and_relationship` to create the two tables
+5. Run `npm start` to populate the created tables with the german states and districts (or `npm start -- --help` for options)
+6. Check you database (and hopefully be happy 😃)
 
 ## Sample output
 ``` bash
